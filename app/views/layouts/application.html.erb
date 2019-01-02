@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>マイナープロ</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    <% end %>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+      <div class="container">
+        <ul class="navbar-nav navbar-left">
+          <%= link_to 'マイナープロ', pages_path, class: 'logo btn btn-link' %>
+        </ul>
+        <ul class="navbar-nav navbar-right">
+          <% if logged_in? %>
+            <li>
+              <%= link_to '投稿', '', class: 'btn btn-default btn-black' %>
+            </li>
+            <li>
+              <%= link_to 'ログアウト', logout_path, class: 'btn btn-default btn-black', method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to '新規登録', new_user_path, class: 'btn btn-default btn-black' %>
+            </li>
+            <li>
+              <%= link_to 'ログイン', login_path, class: 'btn btn-default btn-black' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <%= yield %>
+
+    <script>
+      $(function(){
+        $(".alert").fadeOut(5000);
+      });
+    </script>
+  </body>
+</html>
