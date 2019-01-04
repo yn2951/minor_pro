@@ -13,6 +13,23 @@ class SessionsController < ApplicationController
     end
   end
 
+  def twitter
+    name = request.env['omniauth.auth'][:info][:nickname]
+    email = request.env['omniauth.auth'][:info][:email]
+
+    if User.find_by(name: name, email: email)
+      user = User.find_by(name: name, email: email)
+    else
+      user = User.create(name: name, email: email, password: "1234qwer", password_confirmation: "1234qwer")
+    end
+
+    if log_in user
+      redirect_to root_path, success: 'ログインしました'
+    else
+      redirect_to root_path, danger: 'ログインに失敗しました'
+    end
+  end
+
   def destroy
     log_out
     redirect_to root_url, info: 'ログアウトしました'
@@ -27,7 +44,7 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     @current_user = nil
   end
-  
+
   def session_params
     params.require(:session).permit(:email)
   end
