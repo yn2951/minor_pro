@@ -4,7 +4,7 @@ class CreateTopics < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.integer :category
       t.string :title
-      t.string :topic_image
+      t.string :image
       t.string :description
 
       t.timestamps

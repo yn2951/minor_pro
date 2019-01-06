@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :password, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
   has_many :topics
+  has_many :comments
 
   has_secure_password
 end
