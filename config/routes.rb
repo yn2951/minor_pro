@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'topics/new'
   root 'pages#index'
 
   resources :pages

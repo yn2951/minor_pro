@@ -49,6 +49,10 @@ gem 'omniauth-linkedin'
 gem 'omniauth-mixi'
 gem 'omniauth-twitter'
 
+gem 'enum_help'
+
+gem "carrierwave"
+
 # この3行を追加
 group :production do
   gem 'pg'

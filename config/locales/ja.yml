@@ -1,0 +1,7 @@
+ja:
+  enums:
+    topic:
+      category:
+        movie: 映画
+        music: 音楽
+        app: アプリ
