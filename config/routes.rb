@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'topics#index'
 
   resources :pages
   resources :users
@@ -12,4 +12,15 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   get '/auth/:provider/callback', to: 'sessions#twitter'
+
+  post '/comments', to: 'comments#create'
+
+  post   '/goods', to: 'goods#create'
+  delete '/goods', to: 'goods#destroy'
+
+  post   '/minors', to: 'minors#create'
+  delete '/minors', to: 'minors#destroy'
+
+  post   '/bookmarks', to: 'bookmarks#create'
+  delete '/bookmarks', to: 'bookmarks#destroy'
 end

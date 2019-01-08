@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
 
   <body>
@@ -17,13 +18,16 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
       <div class="container">
         <ul class="navbar-nav navbar-left">
-          <%= link_to 'マイナープロ', pages_path, class: 'logo btn btn-link' %>
+          <%= link_to 'マイナープロ', root_path, class: 'logo btn btn-link' %>
         </ul>
         <ul class="navbar-nav navbar-right">
           <li>
             <%= link_to '投稿', new_topic_path, class: 'btn btn-default btn-black' %>
           </li>
           <% if logged_in? %>
+            <li>
+              <%= link_to 'マイページ', users_path, class: 'btn btn-default btn-black' %>
+            </li>
             <li>
               <%= link_to 'ログアウト', logout_path, class: 'btn btn-default btn-black', method: :delete, data: { confirm: 'ログアウトしますか？' } %>
             </li>

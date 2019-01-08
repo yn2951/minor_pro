@@ -3,7 +3,12 @@ class TopicsController < ApplicationController
     @topic = Topic.new
   end
 
+  def index
+    @topics = Topic.all
+  end
+
   def detail
+    @topic = Topic.find(params[:id])
     @comment = Comment.new
     @comments = Comment.all
   end

@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_many :topics
   has_many :comments
+  has_many :goods
+  has_many :minors
+  has_many :bookmarks
 
   has_secure_password
 end
