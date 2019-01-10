@@ -5,9 +5,9 @@ class UsersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @post_topics = Topic.where(user_id: @user.id)
-    @post_topics_count = @post_topics.count
+    @post_topics = Topic.where(user_id: @user.id).includes(:good_users, :minor_users, :bookmark_users)
     @bookmark_topics = @user.bookmark_topics
+    @post_topics_count = @post_topics.count
   end
 
   def create

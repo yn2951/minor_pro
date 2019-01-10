@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <% if !logged_in? || logged_in? && @topic.user.id != current_user.id %>
-          by <%= link_to @topic.user.name, users_path(id: @topic.user.id) %>
+          by　<%= link_to @topic.user.name, users_path(id: @topic.user.id) %>
         <% else %>
-          by Myself
+          by　Myself
         <% end %>
         　|　いいね！ <%= @topic.good_users.count %>　|　マイナー！ <%= @topic.minor_users.count %>
       </div>

@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.includes(:good_users, :minor_users, :bookmark_users)
   end
 
   def detail
