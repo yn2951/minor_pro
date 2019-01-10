@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
     @topic = current_user.topics.new(topic_params)
 
     if @topic.save
-      redirect_to pages_path, success: "投稿しました"
+      redirect_to root_path, success: "投稿しました"
     else
       flash.new[:danger] = "投稿に失敗しました"
       render :new

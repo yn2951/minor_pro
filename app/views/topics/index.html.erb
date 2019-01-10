@@ -1,7 +1,7 @@
 <div class="index-topics-wrapper">
   <div class="container">
     <%= @topics.each do |topic| %>
-      <div class="row">
+      <div class="row topic-unit">
         <div class="pull-left col-md-2 col-md-offset-6">
           <%= image_tag topic.image.url, class: 'img-responsive' %>
         </div>
@@ -11,35 +11,48 @@
                 <%= topic.title %>
             <% end %>
           </div>
+          <% if !logged_in? || logged_in? && topic.user.id != current_user.id %>
+            <div>
+              by <%= link_to topic.user.name, users_path(id: topic.user.id) %>
+            </div>
+          <% else %>
+            <div>
+              by Myself
+            </div>
+          <% end %>
           <div>
-            <%= topic.user.name %>
+            いいね！ <%= topic.good_users.count %>　|　マイナー！ <%= topic.minor_users.count %>
           </div>
-          <% if !topic.good_users.include?(current_user) %>
-            <%= link_to goods_path(topic_id: topic.id), method: :post do %>
-              <i class="far fa-thumbs-up"></i>
-            <% end %>
-          <% else %>
-            <%= link_to goods_path(topic_id: topic.id), method: :delete do %>
-              <i class="fas fa-thumbs-up"></i>
-            <% end %>
-          <% end %>
-          <% if !topic.minor_users.include?(current_user) %>
-            <%= link_to minors_path(topic_id: topic.id), method: :post do %>
-              <i class="far fa-gem"></i>
-            <% end %>
-          <% else %>
-            <%= link_to minors_path(topic_id: topic.id), method: :delete do %>
-              <i class="fas fa-gem"></i>
-            <% end %>
-          <% end %>
-          <% if !topic.bookmark_users.include?(current_user) %>
-            <%= link_to bookmarks_path(topic_id: topic.id), method: :post do %>
-              <i class="far fa-bookmark"></i>
-            <% end %>
-          <% else %>
-            <%= link_to bookmarks_path(topic_id: topic.id), method: :delete do %>
-              <i class="fas fa-bookmark"></i>
-            <% end %>
+          <% if logged_in? && topic.user.id != current_user.id %>
+            <div>
+              <% if !topic.good_users.include?(current_user) %>
+                <%= link_to goods_path(topic_id: topic.id), method: :post do %>
+                  <i class="far fa-thumbs-up"></i>
+                <% end %>
+              <% else %>
+                <%= link_to goods_path(topic_id: topic.id), method: :delete do %>
+                  <i class="fas fa-thumbs-up"></i>
+                <% end %>
+              <% end %>
+              <% if !topic.minor_users.include?(current_user) %>
+                <%= link_to minors_path(topic_id: topic.id), method: :post do %>
+                  <i class="far fa-gem"></i>
+                <% end %>
+              <% else %>
+                <%= link_to minors_path(topic_id: topic.id), method: :delete do %>
+                  <i class="fas fa-gem"></i>
+                <% end %>
+              <% end %>
+              <% if !topic.bookmark_users.include?(current_user) %>
+                <%= link_to bookmarks_path(topic_id: topic.id), method: :post do %>
+                  <i class="far fa-bookmark"></i>
+                <% end %>
+              <% else %>
+                <%= link_to bookmarks_path(topic_id: topic.id), method: :delete do %>
+                  <i class="fas fa-bookmark"></i>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>

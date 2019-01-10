@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find(params[:id])
+    @post_topics = Topic.where(user_id: @user.id)
+    @post_topics_count = @post_topics.count
+    @bookmark_topics = @user.bookmark_topics
   end
 
   def create
@@ -18,8 +21,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(current_user.id)
+    if user.update(profile: params[:profile])
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:image, :name, :email, :password, :password_confirmation)
   end
 end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'topics#index'
 
-  resources :pages
   resources :users
   resources :topics
 

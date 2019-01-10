@@ -14,13 +14,14 @@ class SessionsController < ApplicationController
   end
 
   def twitter
+    image = request.env['omniauth.auth'][:info][:image]
     name = request.env['omniauth.auth'][:info][:nickname]
     email = request.env['omniauth.auth'][:info][:email]
 
-    if User.find_by(name: name, email: email)
-      user = User.find_by(name: name, email: email)
+    if User.find_by(email: email)
+      user = User.find_by(email: email)
     else
-      user = User.create(name: name, email: email, password: "1234qwer", password_confirmation: "1234qwer")
+      user = User.create(image: image, name: name, email: email, password: "1234qwer", password_confirmation: "1234qwer")
     end
 
     if log_in user

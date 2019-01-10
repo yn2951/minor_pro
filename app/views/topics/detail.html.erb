@@ -2,37 +2,44 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <p>by <%= @topic.user.name %></p>
+        <% if !logged_in? || logged_in? && @topic.user.id != current_user.id %>
+          by <%= link_to @topic.user.name, users_path(id: @topic.user.id) %>
+        <% else %>
+          by Myself
+        <% end %>
+        　|　いいね！ <%= @topic.good_users.count %>　|　マイナー！ <%= @topic.minor_users.count %>
       </div>
-      <div class="col-md-6 col-md-offset-3">
-        <% if !@topic.good_users.include?(current_user) %>
-          <%= link_to goods_path(topic_id: @topic.id), method: :post do %>
-            <i class="far fa-thumbs-up"></i>
+      <% if logged_in? && @topic.user.id != current_user.id %>
+        <div class="col-md-6 col-md-offset-3">
+          <% if !@topic.good_users.include?(current_user) %>
+            <%= link_to goods_path(topic_id: @topic.id), method: :post do %>
+              <i class="far fa-thumbs-up"></i>
+            <% end %>
+          <% else %>
+            <%= link_to goods_path(topic_id: @topic.id), method: :delete do %>
+              <i class="fas fa-thumbs-up"></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to goods_path(topic_id: @topic.id), method: :delete do %>
-            <i class="fas fa-thumbs-up"></i>
+          <% if !@topic.minor_users.include?(current_user) %>
+            <%= link_to minors_path(topic_id: @topic.id), method: :post do %>
+              <i class="far fa-gem"></i>
+            <% end %>
+          <% else %>
+            <%= link_to minors_path(topic_id: @topic.id), method: :delete do %>
+              <i class="fas fa-gem"></i>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if !@topic.minor_users.include?(current_user) %>
-          <%= link_to minors_path(topic_id: @topic.id), method: :post do %>
-            <i class="far fa-gem"></i>
+          <% if !@topic.bookmark_users.include?(current_user) %>
+            <%= link_to bookmarks_path(topic_id: @topic.id), method: :post do %>
+              <i class="far fa-bookmark"></i>
+            <% end %>
+          <% else %>
+            <%= link_to bookmarks_path(topic_id: @topic.id), method: :delete do %>
+              <i class="fas fa-bookmark"></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to minors_path(topic_id: @topic.id), method: :delete do %>
-            <i class="fas fa-gem"></i>
-          <% end %>
-        <% end %>
-        <% if !@topic.bookmark_users.include?(current_user) %>
-          <%= link_to bookmarks_path(topic_id: @topic.id), method: :post do %>
-            <i class="far fa-bookmark"></i>
-          <% end %>
-        <% else %>
-          <%= link_to bookmarks_path(topic_id: @topic.id), method: :delete do %>
-            <i class="fas fa-bookmark"></i>
-          <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
       <div class="col-md-6 col-md-offset-3">
         <%= @topic.title %>
       </div>
@@ -45,13 +52,15 @@
       <div class="col-md-6 col-md-offset-3">
         <h2>コメント</h2>
       </div>
-      <div class="col-md-6 col-md-offset-3">
-        <%= form_for @comment, url: comments_path do |f| %>
-          <%= f.hidden_field :topic_id, :value => @topic.id %>
-          <%= f.text_field :text %>
-          <%= f.submit 'コメントする'%>
-        <% end %>
-      </div>
+      <% if logged_in? %>
+        <div class="col-md-6 col-md-offset-3">
+          <%= form_for @comment, url: comments_path do |f| %>
+            <%= f.hidden_field :topic_id, :value => @topic.id %>
+            <%= f.text_field :text %>
+            <%= f.submit 'コメントする'%>
+          <% end %>
+        </div>
+      <% end %>
       <%= @comments.where(topic_id: @topic.id).each do |comment| %>
         <div class="col-md-6 col-md-offset-3">
           <%= comment.text %>

@@ -1,7 +1,93 @@
 <div class="index-users-wrapper">
   <div class="container">
     <div class="row">
-
+      <div class="pull-left col-md-2 col-md-offset-1">
+        <%= image_tag @user.image.url, class: 'img-responsive' %>
+      </div>
+      <div class="pull-right col-md-9">
+        <div>
+          <%= @user.name %>
+        </div>
+        <div>
+          <%= form_for @user do |f| %>
+            <%= f.text_area :profile %>
+            <%= f.submit '編集する' %>
+          <% end %>
+        </div>
+        <div>
+          投稿<%= @post_topics_count %>件
+        </div>
+      </div>
+    </div>
+    <div class="row col-md-10 col-md-offset-1 text-center list-header">
+      <div class="row">
+        <div class="col-md-4">
+          <p>投稿</p>
+        </div>
+        <div class="col-md-4">
+          <p>保存済み</p>
+        </div>
+        <div class="col-md-4">
+          <p>フォロー</p>
+        </div>
+      </div>
+    </div>
+    <div class="row col-md-10 col-md-offset-1 bar-wrapper">
+      <div class="row">
+        <div class="col-md-4 bar-unit"></div>
+        <div class="col-md-4 bar-unit"></div>
+        <div class="col-md-4 bar-unit"></div>
+      </div>
+    </div>
+    <div class="list-contents">
+      <%= @post_topics.each do |post_topic| %>
+        <div class="row col-md-6 col-md-offset-3 topic-unit">
+          <div class="pull-left col-md-6">
+            <%= image_tag post_topic.image.url, class: 'img-responsive' %>
+          </div>
+          <div class="pull-left col-md-6">
+            <div>
+              <%= link_to detail_path(id: post_topic.id) do %>
+                  <%= post_topic.title %>
+              <% end %>
+            </div>
+            <div>
+              いいね！ <%= post_topic.good_users.count %>　|　マイナー！ <%= post_topic.minor_users.count %>
+            </div>
+            <% if logged_in? && post_topic.user.id != current_user.id %>
+              <div>
+                <% if !post_topic.good_users.include?(current_user) %>
+                  <%= link_to goods_path(topic_id: post_topic.id), method: :post do %>
+                    <i class="far fa-thumbs-up"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to goods_path(topic_id: post_topic.id), method: :delete do %>
+                    <i class="fas fa-thumbs-up"></i>
+                  <% end %>
+                <% end %>
+                <% if !post_topic.minor_users.include?(current_user) %>
+                  <%= link_to minors_path(topic_id: post_topic.id), method: :post do %>
+                    <i class="far fa-gem"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to minors_path(topic_id: post_topic.id), method: :delete do %>
+                    <i class="fas fa-gem"></i>
+                  <% end %>
+                <% end %>
+                <% if !post_topic.bookmark_users.include?(current_user) %>
+                  <%= link_to bookmarks_path(topic_id: post_topic.id), method: :post do %>
+                    <i class="far fa-bookmark"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to bookmarks_path(topic_id: post_topic.id), method: :delete do %>
+                    <i class="fas fa-bookmark"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
