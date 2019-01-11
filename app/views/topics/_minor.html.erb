@@ -1,0 +1,9 @@
+<% if !topic.minor_users.include?(current_user) %>
+  <%= link_to minors_path(topic_id: topic.id), method: :post, remote: true do %>
+    <i class="far fa-gem"></i>
+  <% end %>
+<% else %>
+  <%= link_to minors_path(topic_id: topic.id), method: :delete, remote: true do %>
+    <i class="fas fa-gem"></i>
+  <% end %>
+<% end %>

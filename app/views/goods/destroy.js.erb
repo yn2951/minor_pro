@@ -1,1 +1,2 @@
-$("#<%= @topic.id %>").html("<%= j(render partial: 'topics/good', locals: { topic: @topic }) %>");
+$("#good_<%= @topic.id %>").html("<%= j(render partial: 'topics/good', locals: { topic: @topic }) %>");
+$("#count_goods_<%= @topic.id %>").html("<%= @count_goods %>")

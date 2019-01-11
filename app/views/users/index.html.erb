@@ -52,37 +52,19 @@
               <% end %>
             </div>
             <div>
-              いいね！ <%= post_topic.good_users.count %>　|　マイナー！ <%= post_topic.minor_users.count %>
+              いいね！ <span id="count_goods_<%= post_topic.id %>"><%= post_topic.good_users.count %></span>　|　マイナー！ <span id="count_minors_<%= post_topic.id %>"><%= post_topic.minor_users.count %></span>
             </div>
             <% if logged_in? && post_topic.user.id != current_user.id %>
               <div>
-                <% if !post_topic.good_users.include?(current_user) %>
-                  <%= link_to goods_path(topic_id: post_topic.id), method: :post do %>
-                    <i class="far fa-thumbs-up"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to goods_path(topic_id: post_topic.id), method: :delete do %>
-                    <i class="fas fa-thumbs-up"></i>
-                  <% end %>
-                <% end %>
-                <% if !post_topic.minor_users.include?(current_user) %>
-                  <%= link_to minors_path(topic_id: post_topic.id), method: :post do %>
-                    <i class="far fa-gem"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to minors_path(topic_id: post_topic.id), method: :delete do %>
-                    <i class="fas fa-gem"></i>
-                  <% end %>
-                <% end %>
-                <% if !post_topic.bookmark_users.include?(current_user) %>
-                  <%= link_to bookmarks_path(topic_id: post_topic.id), method: :post do %>
-                    <i class="far fa-bookmark"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to bookmarks_path(topic_id: post_topic.id), method: :delete do %>
-                    <i class="fas fa-bookmark"></i>
-                  <% end %>
-                <% end %>
+                <span id="good_<%= post_topic.id %>">
+                  <%= render partial: "topics/good", locals: {topic: post_topic} %>
+                </span>
+                <span id="minor_<%= post_topic.id %>">
+                  <%= render partial: "topics/minor", locals: {topic: post_topic} %>
+                </span>
+                <span id="bookmark_<%= post_topic.id %>">
+                  <%= render partial: "topics/bookmark", locals: {topic: post_topic} %>
+                </span>
               </div>
             <% end %>
           </div>

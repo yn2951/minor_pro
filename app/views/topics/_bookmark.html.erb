@@ -1,0 +1,9 @@
+<% if !topic.bookmark_users.include?(current_user) %>
+  <%= link_to bookmarks_path(topic_id: topic.id), method: :post, remote: true do %>
+    <i class="far fa-bookmark"></i>
+  <% end %>
+<% else %>
+  <%= link_to bookmarks_path(topic_id: topic.id), method: :delete, remote: true do %>
+    <i class="fas fa-bookmark"></i>
+  <% end %>
+<% end %>

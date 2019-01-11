@@ -20,31 +20,19 @@
             <% end %>
           </div>
           <div>
-            いいね！ <%= topic.good_users.count %>　|　マイナー！ <%= topic.minor_users.count %>
+            いいね！ <span id="count_goods_<%= topic.id %>"><%= topic.goods.count %></span>　|　マイナー！ <span id="count_minors_<%= topic.id %>"><%= topic.minors.count %></span>
           </div>
           <% if logged_in? && topic.user.id != current_user.id %>
             <div>
-              <span id="<%= topic.id %>">
+              <span id="good_<%= topic.id %>">
                 <%= render partial: "topics/good", locals: {topic: topic} %>
               </span>
-              <% if !topic.minor_users.include?(current_user) %>
-                <%= link_to minors_path(topic_id: topic.id), method: :post do %>
-                  <i class="far fa-gem"></i>
-                <% end %>
-              <% else %>
-                <%= link_to minors_path(topic_id: topic.id), method: :delete do %>
-                  <i class="fas fa-gem"></i>
-                <% end %>
-              <% end %>
-              <% if !topic.bookmark_users.include?(current_user) %>
-                <%= link_to bookmarks_path(topic_id: topic.id), method: :post do %>
-                  <i class="far fa-bookmark"></i>
-                <% end %>
-              <% else %>
-                <%= link_to bookmarks_path(topic_id: topic.id), method: :delete do %>
-                  <i class="fas fa-bookmark"></i>
-                <% end %>
-              <% end %>
+              <span id="minor_<%= topic.id %>">
+                <%= render partial: "topics/minor", locals: {topic: topic} %>
+              </span>
+              <span id="bookmark_<%= topic.id %>">
+                <%= render partial: "topics/bookmark", locals: {topic: topic} %>
+              </span>
             </div>
           <% end %>
         </div>
