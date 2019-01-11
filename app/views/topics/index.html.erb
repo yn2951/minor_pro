@@ -11,29 +11,22 @@
                 <%= topic.title %>
             <% end %>
           </div>
-          <% if !logged_in? || logged_in? && topic.user.id != current_user.id %>
-            <div>
-              by <%= link_to topic.user.name, users_path(id: topic.user.id) %>
-            </div>
-          <% else %>
-            <div>
-              by Myself
-            </div>
-          <% end %>
+          <div>
+            by
+            <% if !logged_in? || logged_in? && topic.user.id != current_user.id %>
+              <%= link_to topic.user.name, users_path(id: topic.user.id) %>
+            <% else %>
+              Myself
+            <% end %>
+          </div>
           <div>
             いいね！ <%= topic.good_users.count %>　|　マイナー！ <%= topic.minor_users.count %>
           </div>
           <% if logged_in? && topic.user.id != current_user.id %>
             <div>
-              <% if !topic.good_users.include?(current_user) %>
-                <%= link_to goods_path(topic_id: topic.id), method: :post do %>
-                  <i class="far fa-thumbs-up"></i>
-                <% end %>
-              <% else %>
-                <%= link_to goods_path(topic_id: topic.id), method: :delete do %>
-                  <i class="fas fa-thumbs-up"></i>
-                <% end %>
-              <% end %>
+              <span id="<%= topic.id %>">
+                <%= render partial: "topics/good", locals: {topic: topic} %>
+              </span>
               <% if !topic.minor_users.include?(current_user) %>
                 <%= link_to minors_path(topic_id: topic.id), method: :post do %>
                   <i class="far fa-gem"></i>
