@@ -1,6 +1,6 @@
 <div class="index-topics-wrapper">
   <div class="container">
-    <%= @topics.each do |topic| %>
+    <% @topics.each do |topic| %>
       <div class="row topic-unit">
         <div class="pull-left col-md-2 col-md-offset-6">
           <%= image_tag topic.image.url, class: 'img-responsive' %>
