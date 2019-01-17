@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
 
+  get 'profiles/edit'
+  patch 'profiles/update'
+
   get '/detail', to: 'topics#detail'
 
   get    '/login',   to: 'sessions#new'

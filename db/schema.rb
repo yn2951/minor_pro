@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_094936) do
+ActiveRecord::Schema.define(version: 2019_01_17_081539) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2019_01_08_094936) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "image"
+    t.string "introduce"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "topics", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category"
@@ -52,11 +60,9 @@ ActiveRecord::Schema.define(version: 2019_01_08_094936) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "image"
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "profile", default: "プロフィール："
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -2,20 +2,20 @@
   <div class="container">
     <div class="row">
       <div class="pull-left col-md-2 col-md-offset-1">
-        <%= image_tag @user.image.url, class: 'img-responsive' %>
+        <%= image_tag @profile.image.url, class: 'img-responsive' %>
       </div>
       <div class="pull-right col-md-9">
         <div>
           <%= @user.name %>
         </div>
         <div>
-          <%= form_for @user do |f| %>
-            <%= f.text_area :profile %>
-            <%= f.submit '編集する' %>
-          <% end %>
+          投稿<%= @post_topics_count %>件
         </div>
         <div>
-          投稿<%= @post_topics_count %>件
+          <%= @profile.introduce %>
+        </div>
+        <div>
+          <%= link_to "プロフィールを編集", profiles_edit_path %>
         </div>
       </div>
     </div>

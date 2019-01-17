@@ -21,7 +21,10 @@ class SessionsController < ApplicationController
     if User.find_by(email: email)
       user = User.find_by(email: email)
     else
-      user = User.create(image: image, name: name, email: email, password: "1234qwer", password_confirmation: "1234qwer")
+      user = User.create(name: name, email: email, password: "1234qwer", password_confirmation: "1234qwer")
+      profile = user.profiles.new
+      profile.remote_image_url = image
+      profile.save
     end
 
     if log_in user
