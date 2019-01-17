@@ -9,14 +9,20 @@
           <%= @user.name %>
         </div>
         <div>
-          投稿<%= @post_topics_count %>件
+          投稿<%= @post_topics_count %>件　フォロワー <span id="count_follows_<%= @user.id %>"><%= @user_followers_count %></span>　フォロー <span id="count_follows_<%= @user.id %>"><%= @user_follows_count %></span>
         </div>
         <div>
           <%= @profile.introduce %>
         </div>
-        <div>
-          <%= link_to "プロフィールを編集", profiles_edit_path %>
-        </div>
+        <% if @user == current_user %>
+          <div>
+            <%= link_to "プロフィールを編集", profiles_edit_path %>
+          </div>
+        <% else %>
+          <div id="follow_<%= @user.id %>">
+            <%= render partial: "users/follow", locals: {user: @user} %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="row col-md-10 col-md-offset-1 text-center list-header">

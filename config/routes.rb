@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   post '/comments', to: 'comments#create'
 
+  post   '/follows', to: 'follows#create'
+  delete '/follows', to: 'follows#destroy'
+
   post   '/goods', to: 'goods#create'
   delete '/goods', to: 'goods#destroy'
 

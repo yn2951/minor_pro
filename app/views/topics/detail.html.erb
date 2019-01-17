@@ -7,7 +7,7 @@
         <% else %>
           by　Myself
         <% end %>
-          いいね！ <span id="count_goods_<%= @topic.id %>"><%= @topic.goods.count %></span>　|　マイナー！ <span id="count_minors_<%= @topic.id %>"><%= @topic.minors.count %></span>
+        　|　いいね！ <span id="count_goods_<%= @topic.id %>"><%= @topic.goods.count %></span>　|　マイナー！ <span id="count_minors_<%= @topic.id %>"><%= @topic.minors.count %></span>
       </div>
       <% if logged_in? && @topic.user.id != current_user.id %>
         <div class="col-md-6 col-md-offset-3">

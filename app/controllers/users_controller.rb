@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @post_topics = Topic.where(user_id: params[:id]).includes(:good_users, :minor_users, :bookmark_users)
     @bookmark_topics = @user.bookmark_topics
     @post_topics_count = @post_topics.count
+    @user_followers_count = @user.follows.count
+    @user_follows_count = Follow.where(follower_id: @user.id).count
   end
 
   def create
