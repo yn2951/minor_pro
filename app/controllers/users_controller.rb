@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @profile = Profile.find_by(user_id: @user.id)
     @post_topics = Topic.where(user_id: params[:id]).includes(:good_users, :minor_users, :bookmark_users)
-    @bookmark_topics = @user.bookmark_topics
+    @bookmark_topics = @user.bookmark_topics.includes(:good_users, :minor_users, :bookmark_users)
+    @follow_users = User.joins(:follows).where(follows: {follower_id: @user.id})
     @post_topics_count = @post_topics.count
     @user_followers_count = @user.follows.count
     @user_follows_count = Follow.where(follower_id: @user.id).count
