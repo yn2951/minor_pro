@@ -1,5 +1,21 @@
 <div class="index-topics-wrapper">
   <div class="container">
+    <div class="col-md-1 col-md-offset-4 dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        並び替え
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li> <%= sortable "created_at", "投稿日時が新しい" %> </li>
+        <li> <%= sortable "title", "タイトル" %> </li>
+      </ul>
+    </div>
+    <%= form_tag topics_path, method: :get do %>
+      <div class="row">
+        <%= text_field_tag :keyword, '', class: 'col-md-2 col-md-offset-1', placeholder: ''%>
+        <%= submit_tag '検索', class: 'col-md-1' %>
+      </div>
+    <% end %>
     <% @topics.each do |topic| %>
       <div class="row topic-unit">
         <div class="pull-left col-md-2 col-md-offset-6">

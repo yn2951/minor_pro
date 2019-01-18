@@ -9,6 +9,9 @@
             <%= follow_user.name %>
         <% end %>
       </div>
+      <div>
+        投稿<%= follow_user.topics.count %>件　フォロワー <span><%= follow_user.follows.count %></span>　フォロー <span><%= Follow.where(follower_id: follow_user.id).count %></span>
+      </div>
     </div>
   </div>
 <% end %>

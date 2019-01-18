@@ -9,7 +9,7 @@
           <%= @user.name %>
         </div>
         <div>
-          投稿<%= @post_topics_count %>件　フォロワー <span id="count_follows_<%= @user.id %>"><%= @user_followers_count %></span>　フォロー <span id="count_follows_<%= @user.id %>"><%= @user_follows_count %></span>
+          投稿<%= @post_topics_count %>件　フォロワー <span id="count_follows_<%= @user.id %>"><%= @user_followers_count %></span>　フォロー <span><%= @user_follows_count %></span>
         </div>
         <div>
           <%= @profile.introduce %>
@@ -28,13 +28,13 @@
     <div class="row col-md-10 col-md-offset-1 text-center list-header">
       <div class="row">
         <div class="col-md-4">
-          <%= link_to '投稿', list_path(template: 'post_topic', id: @user.id), remote: true %>
+          <%= link_to '投稿', list_path(template: 'post_topic', id: @user.id), method: :get, remote: true %>
         </div>
         <div class="col-md-4">
-          <%= link_to '保存', list_path(templete: 'bookmark_topic', id: @user.id), remote: true %>
+          <%= link_to '保存', list_path(templete: 'bookmark_topic', id: @user.id), method: :get, remote: true %>
         </div>
         <div class="col-md-4">
-          <%= link_to 'フォロー', list_path(templete: 'follow_user', id: @user.id), remote: true %>
+          <%= link_to 'フォロー', list_path(templete: 'follow_user', id: @user.id), method: :get, remote: true %>
         </div>
       </div>
     </div>
@@ -44,13 +44,7 @@
       </div>
     </div>
     <div id="list-contents">
-      <% if @templete == 'bookmark_topic' %>
-        <%= render partial: "users/bookmark_topic" %>
-      <% elsif @templete == 'follow_user' %>
-        <%= render partial: "users/follow_user" %>
-      <% else %>
-        <%= render partial: "users/post_topic" %>
-      <% end %>
+      <%= render partial: "users/post_topic" %>
     </div>
   </div>
 </div>
