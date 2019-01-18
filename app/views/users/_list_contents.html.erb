@@ -1,0 +1,7 @@
+<% if @templete == 'bookmark_topic' %>
+  <%= render partial: "users/bookmark_topic" %>
+<% elsif @templete == 'follow_user' %>
+  <%= render partial: "users/follow_user" %>
+<% else %>
+  <%= render partial: "users/post_topic" %>
+<% end %>

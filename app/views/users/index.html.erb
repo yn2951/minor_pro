@@ -28,53 +28,28 @@
     <div class="row col-md-10 col-md-offset-1 text-center list-header">
       <div class="row">
         <div class="col-md-4">
-          <p>投稿</p>
+          <%= link_to '投稿', list_path(template: 'post_topic', id: @user.id), remote: true %>
         </div>
         <div class="col-md-4">
-          <p>保存済み</p>
+          <%= link_to '保存', list_path(templete: 'bookmark_topic', id: @user.id), remote: true %>
         </div>
         <div class="col-md-4">
-          <p>フォロー</p>
+          <%= link_to 'フォロー', list_path(templete: 'follow_user', id: @user.id), remote: true %>
         </div>
       </div>
     </div>
     <div class="row col-md-10 col-md-offset-1 bar-wrapper">
-      <div class="row">
-        <div class="col-md-4 bar-unit"></div>
-        <div class="col-md-4 bar-unit"></div>
-        <div class="col-md-4 bar-unit"></div>
+      <div id="bar" class="row">
+        <%= render partial: "users/bar", locals: {templete: @templete} %>
       </div>
     </div>
-    <div class="list-contents">
-      <% @post_topics.each do |post_topic| %>
-        <div class="row col-md-6 col-md-offset-3 topic-unit">
-          <div class="pull-left col-md-6">
-            <%= image_tag post_topic.image.url, class: 'img-responsive' %>
-          </div>
-          <div class="pull-left col-md-6">
-            <div>
-              <%= link_to detail_path(id: post_topic.id) do %>
-                  <%= post_topic.title %>
-              <% end %>
-            </div>
-            <div>
-              いいね！ <span id="count_goods_<%= post_topic.id %>"><%= post_topic.good_users.count %></span>　|　マイナー！ <span id="count_minors_<%= post_topic.id %>"><%= post_topic.minor_users.count %></span>
-            </div>
-            <% if logged_in? && post_topic.user.id != current_user.id %>
-              <div>
-                <span id="good_<%= post_topic.id %>">
-                  <%= render partial: "topics/good", locals: {topic: post_topic} %>
-                </span>
-                <span id="minor_<%= post_topic.id %>">
-                  <%= render partial: "topics/minor", locals: {topic: post_topic} %>
-                </span>
-                <span id="bookmark_<%= post_topic.id %>">
-                  <%= render partial: "topics/bookmark", locals: {topic: post_topic} %>
-                </span>
-              </div>
-            <% end %>
-          </div>
-        </div>
+    <div id="list-contents">
+      <% if @templete == 'bookmark_topic' %>
+        <%= render partial: "users/bookmark_topic" %>
+      <% elsif @templete == 'follow_user' %>
+        <%= render partial: "users/follow_user" %>
+      <% else %>
+        <%= render partial: "users/post_topic" %>
       <% end %>
     </div>
   </div>

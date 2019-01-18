@@ -1,2 +1,2 @@
-$("#comments").prepend("<%= j(render partial: "comments/comment",locals: {comment: @comment}) %>")
+$("#comments").prepend("<div><%= @comment.text %></div>")
 $("#comment-form").val("")
