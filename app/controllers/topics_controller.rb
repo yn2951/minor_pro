@@ -4,13 +4,13 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all.includes(:good_users, :minor_users, :bookmark_users)
+    @topics = Topic.all.order('created_at DESC').includes(:good_users, :minor_users, :bookmark_users)
   end
 
   def detail
     @topic = Topic.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = Comment.all.order('created_at DESC')
   end
 
   def create
