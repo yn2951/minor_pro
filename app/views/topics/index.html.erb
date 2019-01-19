@@ -6,13 +6,21 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li> <%= sortable "created_at", "投稿日時が新しい" %> </li>
-        <li> <%= sortable "title", "タイトル" %> </li>
+        <li> <%= sortable "created_at", "desc", "投稿日時が新しい" %> </li>
+        <li> <%= sortable "created_at", "asc", "投稿日時が古い" %> </li>
+        <li> <%= sortable "good_count", "desc", "いいね！が多い" %> </li>
+        <li> <%= sortable "good_count", "asc", "いいね！が少ない" %> </li>
+        <li> <%= sortable "minor_count", "desc", "マイナー！が多い" %> </li>
+        <li> <%= sortable "minor_count", "asc", "マイナー！が少ない" %> </li>
+        <li> <%= sortable "bookmark_count", "desc", "ブックマークが多い" %> </li>
+        <li> <%= sortable "bookmark_count", "asc", "ブックマークが少ない" %> </li>
+        <li> <%= sortable "comment_count", "desc", "コメントが多い" %> </li>
+        <li> <%= sortable "comment_count", "asc", "コメントが少ない" %> </li>
       </ul>
     </div>
     <%= form_tag topics_path, method: :get do %>
       <div class="row">
-        <%= text_field_tag :keyword, '', class: 'col-md-2 col-md-offset-1', placeholder: ''%>
+        <%= text_field_tag :keyword, @keyword, class: 'col-md-2 col-md-offset-1', placeholder: ''%>
         <%= submit_tag '検索', class: 'col-md-1' %>
       </div>
     <% end %>
@@ -36,7 +44,7 @@
             <% end %>
           </div>
           <div>
-            いいね！ <span id="count_goods_<%= topic.id %>"><%= topic.goods.count %></span>　|　マイナー！ <span id="count_minors_<%= topic.id %>"><%= topic.minors.count %></span>
+            いいね！ <span id="good_count_<%= topic.id %>"><%= topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= topic.id %>"><%= topic.counter.minor_count %></span>
           </div>
           <% if logged_in? && topic.user.id != current_user.id %>
             <div>

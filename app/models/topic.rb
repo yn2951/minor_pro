@@ -1,7 +1,6 @@
 class Topic < ApplicationRecord
-  enum category: {movie: 0, music: 1, app: 2}
-
   belongs_to :user
+  has_one :counter, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
   has_many :minors, dependent: :destroy
@@ -13,6 +12,13 @@ class Topic < ApplicationRecord
   mount_uploader :image, TopicImageUploader
 
   scope :search, -> (keyword) {
-    where("(topics.title LIKE :keyword) OR (topics.description LIKE :keyword) OR (users.name LIKE :keyword)", keyword: "%#{keyword}%") if keyword.present?
+    if keyword.present?
+      words = keyword.to_s.gsub(/(?:[[:space:]%_])+/, " ").split(" ")
+      title = (["topics.title LIKE ?"] * words.size).join(" AND ")
+      description = (["topics.description LIKE ?"] * words.size).join(" AND ")
+      name = (["users.name LIKE ?"] * words.size).join(" AND ")
+
+      where(title, *words.map{|w| "%#{w}%"})
+    end
   }
 end

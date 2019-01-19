@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_111625) do
+ActiveRecord::Schema.define(version: 2019_01_19_145343) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2019_01_17_111625) do
     t.integer "user_id"
     t.integer "topic_id"
     t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "counters", force: :cascade do |t|
+    t.integer "topic_id"
+    t.integer "good_count", limit: 1, default: 0, null: false
+    t.integer "minor_count", limit: 1, default: 0, null: false
+    t.integer "bookmark_count", limit: 1, default: 0, null: false
+    t.integer "comment_count", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,7 +68,6 @@ ActiveRecord::Schema.define(version: 2019_01_17_111625) do
 
   create_table "topics", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "category"
     t.string "title"
     t.string "image"
     t.string "description"

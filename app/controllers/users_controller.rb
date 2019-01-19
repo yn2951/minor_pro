@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    profile = user.profiles.new
+    profile = user.build_profile
 
     if profile.save
       redirect_to root_path, success: '登録しました'

@@ -1,2 +1,2 @@
 $("#minor_<%= @topic.id %>").html("<%= j(render partial: 'topics/minor', locals: { topic: @topic }) %>");
-$("#count_minors_<%= @topic.id %>").html("<%= @count_minors %>")
+$("#minor_count_<%= @topic.id %>").html("<%= @counter.minor_count %>")

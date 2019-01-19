@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !current_user.nil?
   end
+
+  def set_counter
+    @counter = Counter.find_by(topic_id: params[:topic_id])
+  end
 end

@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <div>
-        いいね！ <span id="count_goods_<%= post_topic.id %>"><%= post_topic.good_users.count %></span>　|　マイナー！ <span id="count_minors_<%= post_topic.id %>"><%= post_topic.minor_users.count %></span>
+        いいね！ <span><%= post_topic.counter.good_count %></span>　|　マイナー！ <span><%= post_topic.counter.minor_count %></span>
       </div>
     </div>
   </div>

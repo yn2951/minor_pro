@@ -43,9 +43,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
-gem 'enum_help'
-
-gem "carrierwave"
+gem 'carrierwave'
 
 # この3行を追加
 group :production do
