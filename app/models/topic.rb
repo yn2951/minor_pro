@@ -17,8 +17,14 @@ class Topic < ApplicationRecord
       title = (["topics.title LIKE ?"] * words.size).join(" AND ")
       description = (["topics.description LIKE ?"] * words.size).join(" AND ")
       name = (["users.name LIKE ?"] * words.size).join(" AND ")
+      query = title + ' OR ' + description + ' OR ' + name
 
-      where(title, *words.map{|w| "%#{w}%"})
+      where(
+         query,
+         *words.map{|w| "%#{w}%"},
+         *words.map{|w| "%#{w}%"},
+         *words.map{|w| "%#{w}%"}
+       )
     end
   }
 end
