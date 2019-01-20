@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
 
   def index
     @keyword = params[:keyword]
-    @topics = Topic.joins(:user, :counter).all.search(@keyword).order(sort_column + ' ' + sort_direction).includes(:good_users, :minor_users, :bookmark_users)
+    @topics = Topic.joins(:user, :counter).all.search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users)
   end
 
   def detail
@@ -38,6 +38,6 @@ class TopicsController < ApplicationController
   end
 
   def sort_column
-    Topic.joins(:counter).column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    %w[created_at good_count minor_count bookmark_count comment_count].include?(params[:sort]) ? params[:sort] : "created_at"
   end
 end
