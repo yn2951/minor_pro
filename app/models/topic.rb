@@ -5,9 +5,9 @@ class Topic < ApplicationRecord
   has_many :goods, dependent: :destroy
   has_many :minors, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_many :good_users, through: :goods, source: 'user'
-  has_many :minor_users, through: :minors, source: 'user'
-  has_many :bookmark_users, through: :bookmarks, source: 'user'
+  has_many :good_users, through: :goods, source: 'user', dependent: :destroy
+  has_many :minor_users, through: :minors, source: 'user', dependent: :destroy
+  has_many :bookmark_users, through: :bookmarks, source: 'user', dependent: :destroy
 
   mount_uploader :image, TopicImageUploader
 

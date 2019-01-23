@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :minors, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :follows, dependent: :destroy
-  has_many :bookmark_topics, through: :bookmarks, source: 'topic'
+  has_many :bookmark_topics, through: :bookmarks, source: 'topic', dependent: :destroy
 
   has_secure_password
 end

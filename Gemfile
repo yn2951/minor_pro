@@ -45,6 +45,9 @@ gem 'omniauth-twitter'
 
 gem 'carrierwave'
 
+#環境変数を扱う
+gem 'dotenv-rails'
+
 # この3行を追加
 group :production do
   gem 'pg'

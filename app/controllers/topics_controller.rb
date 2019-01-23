@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
   def detail
     @topic = Topic.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.all.order('created_at DESC')
+    @comments = @topic.comments.order('created_at DESC')
   end
 
   def create

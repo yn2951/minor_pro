@@ -7,7 +7,7 @@ class MinorsController < ApplicationController
   end
 
   def destroy
-    @minor = Minor.find_by(user_id: current_user.id, topic_id: params[:topic_id]).delete
+    @minor = Minor.find_by(user_id: current_user, topic_id: params[:topic_id]).delete
     new_minor_count = set_counter.minor_count.pred
     set_counter.update(minor_count: new_minor_count)
     @topic = @minor.topic

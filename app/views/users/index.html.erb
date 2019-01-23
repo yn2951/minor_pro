@@ -9,7 +9,7 @@
           <%= @user.name %>
         </div>
         <div>
-          投稿<%= @post_topics_count %>件　フォロワー <span id="count_follows_<%= @user.id %>"><%= @user_followers_count %></span>　フォロー <span><%= @user_follows_count %></span>
+          投稿<%= @post_topics_count %>件　フォロワー <span id="count_follows_<%= @user.id %>"><%= @user_followers_count %></span>　フォロー <span><%= @user_followings_count %></span>
         </div>
         <div>
           <%= @profile.introduce %>
@@ -18,7 +18,7 @@
           <div>
             <%= link_to "プロフィールを編集", profiles_edit_path %>
           </div>
-        <% else %>
+        <% elsif logged_in? %>
           <div id="follow_<%= @user.id %>">
             <%= render partial: "users/follow", locals: {user: @user} %>
           </div>
@@ -28,13 +28,13 @@
     <div class="row col-md-10 col-md-offset-1 text-center list-header">
       <div class="row">
         <div class="col-md-4">
-          <%= link_to '投稿', list_path(template: 'post_topic', id: @user.id), method: :get, remote: true %>
+          <%= link_to '投稿', list_path(template: 'post_topic', id: @user), remote: true %>
         </div>
         <div class="col-md-4">
-          <%= link_to '保存', list_path(templete: 'bookmark_topic', id: @user.id), method: :get, remote: true %>
+          <%= link_to '保存', list_path(templete: 'bookmark_topic', id: @user), remote: true %>
         </div>
         <div class="col-md-4">
-          <%= link_to 'フォロー', list_path(templete: 'follow_user', id: @user.id), method: :get, remote: true %>
+          <%= link_to 'フォロー', list_path(templete: 'follow_user', id: @user), remote: true %>
         </div>
       </div>
     </div>

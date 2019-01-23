@@ -37,8 +37,8 @@
           </div>
           <div>
             by
-            <% if !logged_in? || logged_in? && topic.user.id != current_user.id %>
-              <%= link_to topic.user.name, users_path(id: topic.user.id) %>
+            <% if !logged_in? || logged_in? && topic.user != current_user %>
+              <%= link_to topic.user.name, users_path(id: topic.user) %>
             <% else %>
               Myself
             <% end %>
@@ -46,7 +46,7 @@
           <div>
             いいね！ <span id="good_count_<%= topic.id %>"><%= topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= topic.id %>"><%= topic.counter.minor_count %></span>
           </div>
-          <% if logged_in? && topic.user.id != current_user.id %>
+          <% if logged_in? && topic.user != current_user %>
             <div>
               <span id="good_<%= topic.id %>">
                 <%= render partial: "topics/good", locals: {topic: topic} %>
