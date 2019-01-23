@@ -1,6 +1,8 @@
 <div class="new-users-wrapper">
   <div class="container">
     <div class="row">
+      <h3 class="col-md-6 col-md-offset-3 text-center">ユーザー登録</h3
+
       <%= form_for @user do |f| %>
         <div class="form-group col-md-6 col-md-offset-3">
           <%= f.label :ユーザーネーム %>
@@ -21,7 +23,7 @@
           <%= f.label :パスワード確認 %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
-
+        
         <%= f.submit '登録する', class: 'btn btn-default col-md-2 col-md-offset-5' %>
       <% end %>
     </div>

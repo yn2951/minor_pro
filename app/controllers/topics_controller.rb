@@ -2,10 +2,15 @@ class TopicsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def new
-    @topic = Topic.new
+    if !logged_in?
+      redirect_to login_path
+    else
+      @topic = Topic.new
+    end
   end
 
   def index
+    @title = params[:title] ? params[:title] : "投稿日時が新しい"
     @keyword = params[:keyword]
     @topics = Topic.joins(:user, :counter).all.search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users)
   end
