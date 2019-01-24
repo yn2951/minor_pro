@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
   def index
     @title = params[:title] ? params[:title] : "投稿日時が新しい"
     @keyword = params[:keyword]
-    @topics = Topic.joins(:user, :counter).all.search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users)
+    @topics = Topic.joins(:user, :counter).search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users).page(params[:page]).per(6)
   end
 
   def detail

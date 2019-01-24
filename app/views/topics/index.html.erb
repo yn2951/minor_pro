@@ -24,43 +24,9 @@
         <%= submit_tag '検索', class: 'col-md-1' %>
       </div>
     <% end %>
-    <% @topics.each do |topic| %>
-      <div class="row topic-unit">
-        <div class="pull-left col-md-2 col-md-offset-6">
-          <%= image_tag topic.image.url, class: 'img-responsive' %>
-        </div>
-        <div class="pull-right col-md-4">
-          <div>
-            <%= link_to detail_path(id: topic.id) do %>
-                <%= topic.title %>
-            <% end %>
-          </div>
-          <div>
-            by
-            <% if !logged_in? || logged_in? && topic.user != current_user %>
-              <%= link_to topic.user.name, users_path(id: topic.user) %>
-            <% else %>
-              Myself
-            <% end %>
-          </div>
-          <div>
-            いいね！ <span id="good_count_<%= topic.id %>"><%= topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= topic.id %>"><%= topic.counter.minor_count %></span>
-          </div>
-          <% if logged_in? && topic.user != current_user %>
-            <div>
-              <span id="good_<%= topic.id %>">
-                <%= render partial: "topics/good", locals: {topic: topic} %>
-              </span>
-              <span id="minor_<%= topic.id %>">
-                <%= render partial: "topics/minor", locals: {topic: topic} %>
-              </span>
-              <span id="bookmark_<%= topic.id %>">
-                <%= render partial: "topics/bookmark", locals: {topic: topic} %>
-              </span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    <div id="pages">
+      <%= render partial: "topics/page" %>
+      <%= paginate @topics %>
+    </div>
   </div>
 </div>
