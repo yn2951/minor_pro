@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
 
-  get '/list', to: 'users#list'
-
   get 'profiles/edit'
   patch 'profiles/update'
 

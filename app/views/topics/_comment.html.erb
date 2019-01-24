@@ -1,0 +1,17 @@
+<div class="page">
+  <% @comments.each do |comment| %>
+    <div class="col-md-12 row">
+      <div class="pull-left">
+        <%= image_tag comment.user.profile.image.url, class: 'img-responsive comment-icon' %>
+      </div>
+      <div class="pull-left">
+        <div>
+          <%= comment.user.name %>
+        </div>
+        <div>
+          <%= comment.text %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

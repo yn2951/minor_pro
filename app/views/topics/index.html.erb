@@ -24,7 +24,7 @@
         <%= submit_tag '検索', class: 'col-md-1' %>
       </div>
     <% end %>
-    <div id="pages">
+    <div class="pages">
       <%= render partial: "topics/page" %>
       <%= paginate @topics %>
     </div>

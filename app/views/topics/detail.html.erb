@@ -45,22 +45,9 @@
           <% end %>
         </div>
       <% end %>
-      <div id="comments" class="col-md-6 col-md-offset-3">
-        <% @comments.each do |comment| %>
-          <div class="col-md-12 row">
-            <div class="pull-left">
-              <%= image_tag comment.user.profile.image.url, class: 'img-responsive comment-icon' %>
-            </div>
-            <div class="pull-left">
-              <div>
-                <%= comment.user.name %>
-              </div>
-              <div>
-                <%= comment.text %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div id="comments" class="col-md-6 col-md-offset-3 pages">
+        <%= render partial: "topics/comment" %>
+        <%= paginate @comments %>
       <div>
     </div>
   </div>

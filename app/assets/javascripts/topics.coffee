@@ -1,6 +1,6 @@
 $ ->
   $(document).on 'turbolinks:load', ->
-    $('#pages').infiniteScroll
+    $('.pages').infiniteScroll
       path: "nav.pagination a[rel=next]"
       append: ".page"
       history: false

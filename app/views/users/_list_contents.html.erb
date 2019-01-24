@@ -1,7 +1,10 @@
 <% if @templete == 'bookmark_topic' %>
   <%= render partial: "users/bookmark_topic" %>
+  <%= paginate @bookmark_topics %>
 <% elsif @templete == 'follow_user' %>
   <%= render partial: "users/follow_user" %>
+  <%= paginate @following_users %>
 <% else %>
   <%= render partial: "users/post_topic" %>
+  <%= paginate @post_topics %>
 <% end %>

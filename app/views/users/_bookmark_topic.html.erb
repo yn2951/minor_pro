@@ -1,17 +1,32 @@
-<% @bookmark_topics.each do |bookmark_topic| %>
-  <div class="row col-md-6 col-md-offset-3 topic-unit">
-    <div class="pull-left col-md-6">
-      <%= image_tag bookmark_topic.image.url, class: 'img-responsive' %>
-    </div>
-    <div class="pull-left col-md-6">
-      <div>
-        <%= link_to detail_path(id: bookmark_topic.id) do %>
-            <%= bookmark_topic.title %>
+<div class="page">
+  <% @bookmark_topics.each do |bookmark_topic| %>
+    <div class="row col-md-6 col-md-offset-3 topic-unit">
+      <div class="pull-left col-md-6">
+        <%= image_tag bookmark_topic.image.url, class: 'img-responsive' %>
+      </div>
+      <div class="pull-left col-md-6">
+        <div>
+          <%= link_to detail_path(id: bookmark_topic.id) do %>
+              <%= bookmark_topic.title %>
+          <% end %>
+        </div>
+        <div>
+          いいね！ <span id="good_count_<%= bookmark_topic.id %>"><%= bookmark_topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= bookmark_topic.id %>"><%= bookmark_topic.counter.minor_count %></span>
+        </div>
+        <% if logged_in? && bookmark_topic.user != current_user %>
+          <div>
+            <span id="good_<%= bookmark_topic.id %>">
+              <%= render partial: "topics/good", locals: {topic: bookmark_topic} %>
+            </span>
+            <span id="minor_<%= bookmark_topic.id %>">
+              <%= render partial: "topics/minor", locals: {topic: bookmark_topic} %>
+            </span>
+            <span id="bookmark_<%= bookmark_topic.id %>">
+              <%= render partial: "topics/bookmark", locals: {topic: bookmark_topic} %>
+            </span>
+          </div>
         <% end %>
       </div>
-      <div>
-        いいね！ <span><%= bookmark_topic.counter.good_count %></span>　|　マイナー！ <span ><%= bookmark_topic.counter.minor_count %></span>
-      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

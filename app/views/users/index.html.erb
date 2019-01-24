@@ -28,13 +28,13 @@
     <div class="row col-md-10 col-md-offset-1 text-center list-header">
       <div class="row">
         <div class="col-md-4">
-          <%= link_to '投稿', list_path(template: 'post_topic', id: @user), remote: true %>
+          <%= link_to '投稿', users_path(template: 'post_topic', id: @user) %>
         </div>
         <div class="col-md-4">
-          <%= link_to '保存', list_path(templete: 'bookmark_topic', id: @user), remote: true %>
+          <%= link_to '保存', users_path(templete: 'bookmark_topic', id: @user) %>
         </div>
         <div class="col-md-4">
-          <%= link_to 'フォロー', list_path(templete: 'follow_user', id: @user), remote: true %>
+          <%= link_to 'フォロー', users_path(templete: 'follow_user', id: @user) %>
         </div>
       </div>
     </div>
@@ -43,8 +43,8 @@
         <%= render partial: "users/bar", locals: {templete: @templete} %>
       </div>
     </div>
-    <div id="list-contents">
-      <%= render partial: "users/post_topic" %>
+    <div id="list-contents" class="pages">
+      <%= render partial: "users/list_contents" %>
     </div>
   </div>
 </div>

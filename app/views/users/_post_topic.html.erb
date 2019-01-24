@@ -1,17 +1,19 @@
-<% @post_topics.each do |post_topic| %>
-  <div class="row col-md-6 col-md-offset-3 topic-unit">
-    <div class="pull-left col-md-6">
-      <%= image_tag post_topic.image.url, class: 'img-responsive' %>
-    </div>
-    <div class="pull-left col-md-6">
-      <div>
-        <%= link_to detail_path(id: post_topic.id) do %>
-            <%= post_topic.title %>
-        <% end %>
+<div class="page">
+  <% @post_topics.each do |post_topic| %>
+    <div class="row col-md-6 col-md-offset-3 topic-unit">
+      <div class="pull-left col-md-6">
+        <%= image_tag post_topic.image.url, class: 'img-responsive' %>
       </div>
-      <div>
-        いいね！ <span><%= post_topic.counter.good_count %></span>　|　マイナー！ <span><%= post_topic.counter.minor_count %></span>
+      <div class="pull-left col-md-6">
+        <div>
+          <%= link_to detail_path(id: post_topic.id) do %>
+              <%= post_topic.title %>
+          <% end %>
+        </div>
+        <div>
+          いいね！ <span><%= post_topic.counter.good_count %></span>　|　マイナー！ <span><%= post_topic.counter.minor_count %></span>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
