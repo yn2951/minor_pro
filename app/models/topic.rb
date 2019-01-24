@@ -1,4 +1,8 @@
 class Topic < ApplicationRecord
+  validates :title, presence: true, length: { in: 1..100 }
+  validates :image, presence: true
+  validates :description, presence: true, length: { in: 1..400 }
+
   belongs_to :user
   has_one :counter, dependent: :destroy
   has_many :comments, dependent: :destroy

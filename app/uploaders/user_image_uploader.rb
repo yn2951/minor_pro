@@ -48,4 +48,8 @@ class UserImageUploader < CarrierWave::Uploader::Base
   def default_url
     "default.png"
   end
+
+  def size_range
+    1..10.megabytes
+  end
 end

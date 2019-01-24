@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_action :set_topic, only: [:edit, :update]
 
   def new
     if !logged_in?
@@ -7,6 +8,9 @@ class TopicsController < ApplicationController
     else
       @topic = Topic.new
     end
+  end
+
+  def edit
   end
 
   def index
@@ -28,14 +32,27 @@ class TopicsController < ApplicationController
     if counter.save
       redirect_to root_path, success: "投稿しました"
     else
-      flash.new[:danger] = "投稿に失敗しました"
+      flash.now[:danger] = "投稿に失敗しました"
       render :new
+    end
+  end
+
+  def update
+    if @topic.update(topic_params)
+      redirect_to detail_path(id: params[:id]), success: '編集を保存しました'
+    else
+      flash.now[:danger] = '編集の保存に失敗しました'
+      render :edit
     end
   end
 
   private
   def topic_params
     params.require(:topic).permit(:title, :image, :description)
+  end
+
+  def set_topic
+    @topic = Topic.find(params[:id])
   end
 
   def sort_direction
