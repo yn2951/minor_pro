@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_145343) do
     t.integer "minor_count", limit: 1, default: 0, null: false
     t.integer "bookmark_count", limit: 1, default: 0, null: false
     t.integer "comment_count", limit: 1, default: 0, null: false
+    t.integer "variation", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

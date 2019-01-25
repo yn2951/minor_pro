@@ -1,0 +1,19 @@
+<div class="page">
+  <% @rises.each do |rise| %>
+    <div class="row topic-unit">
+      <div class="col-md-6">
+        <%= image_tag rise.image.url, class: 'img-responsive' %>
+      </div>
+      <div class="col-md-6">
+        <div>
+          <%= link_to detail_path(id: rise.id) do %>
+              <%= rise.title %>
+          <% end %>
+        </div>
+        <div>
+          いいね！ <span><%= rise.counter.good_count %></span>　|　マイナー！ <span><%= rise.counter.minor_count %></span>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

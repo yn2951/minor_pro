@@ -50,6 +50,8 @@ gem 'dotenv-rails'
 
 gem 'kaminari'
 
+gem 'whenever', :require => false
+
 # この3行を追加
 group :production do
   gem 'pg'
