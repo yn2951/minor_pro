@@ -1,34 +1,24 @@
 <div class="index-topics-wrapper">
   <div class="container">
-    <div class="row">
-      <div class="col-md-1 col-md-offset-4 dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <%= @title %>
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li> <%= sortable "created_at", "desc", "投稿日時が新しい" %> </li>
-          <li> <%= sortable "created_at", "asc", "投稿日時が古い" %> </li>
-          <li> <%= sortable "good_count", "desc", "いいね！が多い" %> </li>
-          <li> <%= sortable "good_count", "asc", "いいね！が少ない" %> </li>
-          <li> <%= sortable "minor_count", "desc", "マイナー！が多い" %> </li>
-          <li> <%= sortable "minor_count", "asc", "マイナー！が少ない" %> </li>
-          <li> <%= sortable "bookmark_count", "desc", "ブックマークが多い" %> </li>
-          <li> <%= sortable "bookmark_count", "asc", "ブックマークが少ない" %> </li>
-          <li> <%= sortable "comment_count", "desc", "コメントが多い" %> </li>
-          <li> <%= sortable "comment_count", "asc", "コメントが少ない" %> </li>
-        </ul>
+    <div class="row col-md-5 col-md-offset-1">
+      <div class="col-md-12 text-center">
+        <h3>急上昇</h3>
       </div>
-      <%= form_tag topics_path, method: :get do %>
-        <%= text_field_tag :keyword, @keyword, class: 'col-md-2 col-md-offset-1', placeholder: ''%>
-        <%= submit_tag '検索', class: 'col-md-1' %>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="rises col-md-5 col-md-offset-1">
+      <div class="rises col-md-12">
         <%= render partial: "topics/rise" %>
       </div>
-      <div class="pages col-md-6">
+    </div>
+    <div class="row col-md-6">
+      <div class="col-md-5 dropdown">
+        <%= render partial: "topics/sort" %>
+      </div>
+      <div class="col-md-6">
+        <%= form_tag topics_path, method: :get do %>
+          <%= text_field_tag :keyword, @keyword, placeholder: ''%>
+          <%= submit_tag '検索' %>
+        <% end %>
+      </div>
+      <div class="pages col-md-12">
         <%= render partial: "topics/page" %>
         <%= paginate @topics %>
       </div>
