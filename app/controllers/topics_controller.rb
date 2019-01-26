@@ -17,8 +17,8 @@ class TopicsController < ApplicationController
     @title = params[:title] ? params[:title] : "投稿日時が新しい"
     @keyword = params[:keyword]
     joins_table = Topic.joins(:user, :counter)
-    @rises = joins_table.order("totalize_result DESC", {created_at: :desc}).limit(3)
-    @topics = joins_table.search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users).page(params[:page]).per(6)
+    @rises = joins_table.order("totalize_result DESC", {created_at: :desc}).limit(5)
+    @topics = joins_table.search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users).page(params[:page]).per(5)
   end
 
   def detail

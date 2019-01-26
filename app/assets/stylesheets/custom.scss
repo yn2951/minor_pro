@@ -1,3 +1,7 @@
+body {
+  font-size: 62.5%;
+}
+
 .alert {
   margin-bottom: 0px;
   text-align: center;
@@ -48,10 +52,6 @@ ul {
     padding: 130px 0;
 }
 
-.topic-unit {
-  margin-top: 30px;
-}
-
 .list-header {
   border-bottom: solid 1px #000;
   margin-top: 50px;
@@ -68,12 +68,98 @@ ul {
   height: 10px;
 }
 
-.comment-icon {
+.icon {
   border-radius: 50%;
+}
+
+.comment-icon {
   width: 50px;
   height : 50px;
 }
 
+.mypage-icon {
+
+}
+
 .pages > nav, .pages > span {
   display: none;
+}
+
+.search-contents {
+  margin-bottom: 15px;
+}
+
+.topics-wrapper {
+  margin-left: 30px;
+}
+
+.topic-unit {
+  padding: 18px 0;
+  border-bottom: solid 1px #eee;
+}
+
+.topic-unit .title {
+  font-size: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 450px;
+}
+
+.topic-unit .evaluation {
+  font-size: 1.2rem;
+}
+
+.topic-unit .name {
+  font-size: 1.2rem;
+}
+
+.topic-unit .topic-thumbnail {
+  max-height: 70px;
+  max-width: 70px;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.topic-unit .evaluate-button {
+  font-size: 1.2rem;
+}
+
+.rises-wrapper {
+  padding-right: 15px;
+  border-right: solid 1px #eee;
+}
+
+.rise-unit {
+  margin-top: 15px;
+}
+
+.rise-unit .title {
+  font-size: 1.2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.2rem;
+  max-height: 24px;
+  max-width: 200px;
+}
+
+.rise-unit .evaluation {
+  font-size: 1.2rem;
+}
+
+.rise-unit .rise-thumbnail {
+  max-height: 40px;
+  max-width: 40px;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.dropdown-toggle {
+  min-width: 180px;
 }
