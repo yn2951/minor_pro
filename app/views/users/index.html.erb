@@ -1,25 +1,25 @@
 <div class="index-users-wrapper">
   <div class="container">
-    <div class="row">
-      <div class="pull-left col-md-2 col-md-offset-1">
-        <%= image_tag @profile.image.url, class: 'img-responsive' %>
+    <div class="row user-info">
+      <div class="pull-left col-md-2 col-md-offset-2">
+        <%= image_tag @profile.image.url, class: 'img-responsive icon mypage-icon' %>
       </div>
-      <div class="pull-right col-md-9">
-        <div>
+      <div class="pull-left col-md-6">
+        <div class="name">
           <%= @user.name %>
         </div>
-        <div>
+        <div class="evaluation">
           投稿<%= @post_topics_count %>件　フォロワー <span id="count_follows_<%= @user.id %>"><%= @user_followers_count %></span>　フォロー <span><%= @user_followings_count %></span>
         </div>
-        <div>
+        <div class="introduce">
           <%= @profile.introduce %>
         </div>
         <% if @user == current_user %>
-          <div>
+          <div class="edit-button">
             <%= link_to "プロフィールを編集", profiles_edit_path %>
           </div>
         <% elsif logged_in? %>
-          <div id="follow_<%= @user.id %>">
+          <div class="evaluate-button" id="follow_<%= @user.id %>">
             <%= render partial: "users/follow", locals: {user: @user} %>
           </div>
         <% end %>

@@ -28,14 +28,13 @@ class TopicsController < ApplicationController
   end
 
   def create
-    topic = current_user.topics.create(topic_params)
+    topic = current_user.topics.new(topic_params)
     counter = topic.build_counter
 
-    if counter.save
+    if topic.save && counter.save
       redirect_to root_path, success: "投稿しました"
     else
-      flash.now[:danger] = "投稿に失敗しました"
-      render :new
+      redirect_to new_topic_path, danger: "投稿に失敗しました"
     end
   end
 

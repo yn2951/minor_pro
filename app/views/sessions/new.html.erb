@@ -16,11 +16,14 @@
 
         <%= f.submit 'ログインする', class: 'btn btn-default col-md-2 col-md-offset-5' %>
       <% end %>
-      <div>
-        <%= link_to 'Twitterでログインする', 'http://localhost:3000/auth/twitter' %>
-      </div>
-      <div>
+    </div>
+    <div class="sub">
+      <div class="new-user">
         <%= link_to '新規登録する', new_user_path %>
+      </div>
+      <div class="twitter">
+        <i class="fab fa-twitter"></i>
+        <%= link_to 'Twitterでログインする', 'http://localhost:3000/auth/twitter' %>
       </div>
     </div>
   </div>

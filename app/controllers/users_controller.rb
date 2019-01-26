@@ -21,14 +21,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    user = User.new(user_params)
     profile = user.build_profile
 
-    if profile.save
+    if user.save && profile.save
       redirect_to root_path, success: '登録しました'
     else
-      flash.now[:danger] = '登録に失敗しました'
-      render :new
+      redirect_to new_user_path, danger: '登録に失敗しました'
     end
   end
 
