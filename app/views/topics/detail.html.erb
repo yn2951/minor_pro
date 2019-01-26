@@ -39,7 +39,7 @@
         <h4>コメント<%= @topic.counter.comment_count %>件</h4>
       </div>
       <% if logged_in? %>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 comment-form">
           <%= form_for @comment, url: comments_path do |f| %>
             <%= hidden_field_tag :topic_id, @topic.id %>
             <%= f.hidden_field :topic_id, :value => @topic.id %>
