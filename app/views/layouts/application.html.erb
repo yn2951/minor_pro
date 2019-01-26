@@ -15,31 +15,34 @@
       <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <% end %>
 
-    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent navbar-custom">
       <div class="container">
-        <ul class="navbar-nav navbar-left">
-          <%= link_to 'マイナープロ', root_path, class: 'logo btn btn-link' %>
-        </ul>
-        <ul class="navbar-nav navbar-right">
-          <li>
-            <%= link_to '投稿', new_topic_path, class: 'btn btn-default btn-black' %>
-          </li>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-1">
+            <%= link_to root_path do %>
+              <span><%= image_tag "logo.png", class: "navbar-brand" %></span>
+            <% end %>
+          </div>
+          <div>
+          <div class="col-md-1 col-md-offset-5">
+            <%= link_to '投稿', new_topic_path, class: 'btn btn-link post-btn' %>
+          </div>
           <% if logged_in? %>
-            <li>
-              <%= link_to 'マイページ', users_path(id: current_user.id), class: 'btn btn-default btn-black' %>
-            </li>
-            <li>
-              <%= link_to 'ログアウト', logout_path, class: 'btn btn-default btn-black', method: :delete, data: { confirm: 'ログアウトしますか？' } %>
-            </li>
+            <div class="col-md-1">
+              <%= link_to 'マイページ', users_path(id: current_user.id), class: 'btn btn-link' %>
+            </div>
+            <div class="col-md-1">
+              <%= link_to 'ログアウト', logout_path, class: 'btn btn-link', method: :delete, data: { confirm: 'ログアウトしますか？' } %>
+            </div>
           <% else %>
-            <li>
-              <%= link_to '新規登録', new_user_path, class: 'btn btn-default btn-black' %>
-            </li>
-            <li>
-              <%= link_to 'ログイン', login_path, class: 'btn btn-default btn-black' %>
-            </li>
+            <div class="col-md-1">
+              <%= link_to '新規登録', new_user_path, class: 'btn btn-link' %>
+            </div>
+            <div class="col-md-1">
+              <%= link_to 'ログイン', login_path, class: 'btn btn-link' %>
+            </div>
           <% end %>
-        </ul>
+        </div>
       </div>
     </nav>
 

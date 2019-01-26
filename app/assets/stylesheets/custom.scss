@@ -10,6 +10,11 @@ body {
   z-index: 10000;
 }
 
+a {
+  text-decoration: none !important;
+  color: #000 !important;
+}
+
 ul {
   list-style-type: none;
 }
@@ -26,30 +31,26 @@ ul {
   }
 }
 
-.logo {
-  color: #fff !important;
-  font-family: "Arial Black";
-  font-size: 30px;
-  background-color: rgba(0,0,0,0.0);
-  margin: 17px 0;
-  padding: 0;
-  &:hover {
-    color: #bbb !important;
-    text-decoration: none;
-  }
-}
-
 .navbar-transparent {
-  background-color: rgba(0,0,0,0.5);
+  margin-bottom: 0px;
+  background-color: rgba(255,255,255,0.5);
 
   .navbar-brand {
-    padding: 0px;
-    margin-top: 15px;
+    max-width: 200px;
+    height: auto;
+  }
+
+  a {
+    margin-top: 10px;
+  }
+
+  .post-btn {
+    margin-left: 38px;
   }
 }
 
 .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
-    padding: 130px 0;
+    padding: 90px 0;
 }
 
 .list-header {
@@ -103,7 +104,7 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 450px;
+  max-width: 470px;
 }
 
 .topic-unit .evaluation {
@@ -144,7 +145,7 @@ ul {
   -webkit-line-clamp: 2;
   line-height: 1.2rem;
   max-height: 24px;
-  max-width: 200px;
+  max-width: 300px;
 }
 
 .rise-unit .evaluation {
