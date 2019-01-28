@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :twitter_params, only: [:twitter]
+
   def new
   end
 
@@ -14,16 +16,12 @@ class SessionsController < ApplicationController
   end
 
   def twitter
-    image = request.env['omniauth.auth'][:info][:image]
-    name = request.env['omniauth.auth'][:info][:nickname]
-    email = request.env['omniauth.auth'][:info][:email]
-
-    if User.find_by(email: email)
-      user = User.find_by(email: email)
+    if User.find_by(email: @email)
+      user = User.find_by(email: @email)
     else
-      user = User.create(name: name, email: email, password: "1234qwer", password_confirmation: "1234qwer")
+      user = User.create(name: @name, email: @email, password: "1234qwer", password_confirmation: "1234qwer")
       profile = user.build_profile
-      profile.remote_image_url = image
+      profile.remote_image_url = @image
       profile.save
     end
 
@@ -52,4 +50,11 @@ class SessionsController < ApplicationController
   def session_params
     params.require(:session).permit(:email)
   end
+
+  def twitter_params
+    @image = request.env['omniauth.auth'][:info][:image]
+    @name = request.env['omniauth.auth'][:info][:nickname]
+    @email = request.env['omniauth.auth'][:info][:email]
+  end
+
 end
