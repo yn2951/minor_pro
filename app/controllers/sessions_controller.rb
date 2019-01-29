@@ -52,9 +52,10 @@ class SessionsController < ApplicationController
   end
 
   def twitter_params
-    @image = request.env['omniauth.auth'][:info][:image]
-    @name = request.env['omniauth.auth'][:info][:nickname]
-    @email = request.env['omniauth.auth'][:info][:email]
+    informations = request.env['omniauth.auth']
+    @image = informations[:info][:image]
+    @name = informations[:info][:nickname]
+    @email = informations[:info][:email]
     @password = "1234qwer"
     @password_confirmation = "1234qwer"
   end
