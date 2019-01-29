@@ -21,11 +21,7 @@ class SessionsController < ApplicationController
     else
       user = User.create(name: @name, email: @email, password: @password, password_confirmation: @password_confirmation)
       profile = user.build_profile
-      if Rails.env.production?
-        profile.image = @image
-      else
-        profile.remote_image_url = @image
-      end
+      profile.remote_image_url = @image
       profile.save
     end
 
@@ -56,10 +52,9 @@ class SessionsController < ApplicationController
   end
 
   def twitter_params
-    informations = request.env['omniauth.auth']
-    @image = informations[:info][:image]
-    @name = informations[:info][:nickname]
-    @email = informations[:info][:email]
+    @image = request.env['omniauth.auth'][:info][:image]
+    @name = request.env['omniauth.auth'][:info][:nickname]
+    @email = request.env['omniauth.auth'][:info][:email]
     @password = "1234qwer"
     @password_confirmation = "1234qwer"
   end
