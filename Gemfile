@@ -44,7 +44,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 
 #環境変数を扱う
 gem 'dotenv-rails'
