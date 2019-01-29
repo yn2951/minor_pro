@@ -21,7 +21,11 @@ class SessionsController < ApplicationController
     else
       user = User.create(name: @name, email: @email, password: "1234qwer", password_confirmation: "1234qwer")
       profile = user.build_profile
-      profile.remote_image_url = @image
+      if Rails.env.production?
+        profile.image = @image
+      else
+        profile.remote_image_url = @image
+      end
       profile.save
     end
 
