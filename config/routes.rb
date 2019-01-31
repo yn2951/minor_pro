@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
 
+  get '/resisteration/:id', to: 'users#resisteration_done'
+
   get 'profiles/edit'
   patch 'profiles/update'
 

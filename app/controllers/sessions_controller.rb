@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(session_params)
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password]) && user.profile
       log_in user
       redirect_to root_path, success: 'ログインに成功しました'
     else
@@ -52,10 +52,10 @@ class SessionsController < ApplicationController
   end
 
   def twitter_params
-    informations = request.env['omniauth.auth']
-    @image = informations[:info][:image]
-    @name = informations[:info][:nickname]
-    @email = informations[:info][:email]
+    informations = request.env['omniauth.auth'][:info]
+    @image = informations[:image]
+    @name = informations[:nickname]
+    @email = informations[:email]
     @password = "1234qwer"
     @password_confirmation = "1234qwer"
   end
