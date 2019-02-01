@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'profiles/update'
 
   get '/detail', to: 'topics#detail'
+  delete '/topics', to: 'topics#destroy'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

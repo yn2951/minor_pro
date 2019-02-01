@@ -47,6 +47,11 @@ class TopicsController < ApplicationController
     end
   end
 
+  def destroy
+    Topic.find(params[:topic_id]).delete
+    redirect_to users_path(id: params[:user_id]), success: '投稿を削除しました'
+  end
+
   private
   def topic_params
     params.require(:topic).permit(:title, :image, :description)

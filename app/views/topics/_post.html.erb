@@ -25,6 +25,11 @@
           <%= f.submit '投稿する', class: 'btn btn-default col-md-2 col-md-offset-5' %>
         <% end %>
       <% end %>
+
+      <% if params[:id] %>
+        <%= link_to '投稿を削除する', topics_path(user_id: @topic.user, topic_id: @topic.id), method: :delete, data: {confirm: '投稿を削除しますか？'}, class: 'destroy-topic text-center col-md-2 col-md-offset-5' %>
+      <% end %>
+
     </div>
   </div>
 </div>

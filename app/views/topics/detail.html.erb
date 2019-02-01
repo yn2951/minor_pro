@@ -3,16 +3,12 @@
     <div class="row">
       <div class="main-contents">
         <div class="col-md-6 col-md-offset-3 info">
-          by
-          <% if !logged_in? || logged_in? && @topic.user != current_user %>
-          　<%= link_to @topic.user.name, users_path(id: @topic.user) %>
-          <% else %>
-          　Myself
-          <% end %>
+          by　
+          <%= link_to @topic.user.name, users_path(id: @topic.user) %>
           　|　いいね！ <span id="good_count_<%= @topic.id %>"><%= @topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= @topic.id %>"><%= @topic.counter.minor_count %></span>
           <% if @topic.user == current_user %>
           　|　<%= link_to '編集する', edit_topic_path(id: @topic.id), class: 'btn btn-link' %>
-          <% elsif logged_in? %>
+          <% else %>
           　|　
               <span id="good_<%= @topic.id %>">
                 <%= render partial: "topics/good", locals: {topic: @topic} %>
