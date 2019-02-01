@@ -18,7 +18,7 @@
           <div class="edit-button">
             <%= link_to "プロフィールを編集", profiles_edit_path %>
           </div>
-        <% elsif logged_in? %>
+        <% else %>
           <div class="evaluate-button" id="follow_<%= @user.id %>">
             <%= render partial: "users/follow", locals: {user: @user} %>
           </div>

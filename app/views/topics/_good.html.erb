@@ -1,9 +1,15 @@
-<% if !topic.good_users.include?(current_user) %>
-  <%= link_to goods_path(topic_id: topic.id), method: :post, remote: true do %>
-    <i class="far fa-thumbs-up"></i>
+<% if logged_in? %>
+  <% if !topic.good_users.include?(current_user) %>
+    <%= link_to goods_path(topic_id: topic.id), method: :post, remote: true do %>
+      <i class="far fa-thumbs-up"></i>
+    <% end %>
+  <% else %>
+    <%= link_to goods_path(topic_id: topic.id), method: :delete, remote: true do %>
+      <i class="fas fa-thumbs-up"></i>
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to goods_path(topic_id: topic.id), method: :delete, remote: true do %>
-    <i class="fas fa-thumbs-up"></i>
+  <%= link_to login_path do %>
+    <i class="far fa-thumbs-up"></i>
   <% end %>
 <% end %>

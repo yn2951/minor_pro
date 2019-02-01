@@ -1,9 +1,15 @@
-<% if !user.follows.where(follower_id: current_user).present? %>
-  <%= link_to follows_path(user_id: user), method: :post, remote: true do %>
-    <i class="far fa-thumbs-up"></i>
+<% if logged_in? %>
+  <% if !user.follows.where(follower_id: current_user).present? %>
+    <%= link_to follows_path(user_id: user), method: :post, remote: true do %>
+      <i class="far fa-thumbs-up"></i>
+    <% end %>
+  <% else %>
+    <%= link_to follows_path(user_id: user), method: :delete, remote: true do %>
+      <i class="fas fa-thumbs-up"></i>
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to follows_path(user_id: user), method: :delete, remote: true do %>
-    <i class="fas fa-thumbs-up"></i>
+  <%= link_to login_path do %>
+    <i class="far fa-thumbs-up"></i>
   <% end %>
 <% end %>

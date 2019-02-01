@@ -11,29 +11,22 @@
           <% end %>
         </div>
         <div class="name">
-          by
-          <% if !logged_in? || logged_in? && topic.user != current_user %>
-            <%= link_to topic.user.name, users_path(id: topic.user) %>
-          <% else %>
-            Myself
-          <% end %>
+          by <%= link_to topic.user.name, users_path(id: topic.user) %>
         </div>
         <div class="evaluation">
           いいね！ <span id="good_count_<%= topic.id %>"><%= topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= topic.id %>"><%= topic.counter.minor_count %></span>
         </div>
-        <% if logged_in? && topic.user != current_user %>
-          <div class="evaluate-button">
-            <span id="good_<%= topic.id %>">
-              <%= render partial: "topics/good", locals: {topic: topic} %>
-            </span>
-            <span id="minor_<%= topic.id %>">
-              <%= render partial: "topics/minor", locals: {topic: topic} %>
-            </span>
-            <span id="bookmark_<%= topic.id %>">
-              <%= render partial: "topics/bookmark", locals: {topic: topic} %>
-            </span>
-          </div>
-        <% end %>
+        <div class="evaluate-button">
+          <span id="good_<%= topic.id %>">
+            <%= render partial: "topics/good", locals: {topic: topic} %>
+          </span>
+          <span id="minor_<%= topic.id %>">
+            <%= render partial: "topics/minor", locals: {topic: topic} %>
+          </span>
+          <span id="bookmark_<%= topic.id %>">
+            <%= render partial: "topics/bookmark", locals: {topic: topic} %>
+          </span>
+        </div>
       </div>
     </div>
   <% end %>

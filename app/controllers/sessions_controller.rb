@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   before_action :twitter_params, only: [:twitter]
 
   def new
+    if params[:login].nil?
+      flash.now[:success] = 'ログインしてください'
+    end
   end
 
   def create

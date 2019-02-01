@@ -13,4 +13,8 @@ class User < ApplicationRecord
   has_many :bookmark_topics, through: :bookmarks, source: 'topic', dependent: :destroy
 
   has_secure_password
+
+  def self.resisteration_reset
+    users = User.left_joins(:profile).where(profile: {id: nil}).where("created_at<?", Time.now-(1.minites)).delete_all
+  end
 end

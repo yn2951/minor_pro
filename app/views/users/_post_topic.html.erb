@@ -13,6 +13,17 @@
         <div class="evaluation">
           いいね！ <span><%= post_topic.counter.good_count %></span>　|　マイナー！ <span><%= post_topic.counter.minor_count %></span>
         </div>
+        <div class="evaluate-button">
+          <span id="good_<%= post_topic.id %>">
+            <%= render partial: "topics/good", locals: {topic: post_topic} %>
+          </span>
+          <span id="minor_<%= post_topic.id %>">
+            <%= render partial: "topics/minor", locals: {topic: post_topic} %>
+          </span>
+          <span id="bookmark_<%= post_topic.id %>">
+            <%= render partial: "topics/bookmark", locals: {topic: post_topic} %>
+          </span>
+        </div>
       </div>
     </div>
   <% end %>
