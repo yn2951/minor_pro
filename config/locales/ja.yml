@@ -2,6 +2,20 @@ ja:
   enums:
     topic:
       category:
-        movie: 映画
-        music: 音楽
-        app: アプリ
+        japanese: 邦楽
+        english: 洋楽
+        kpop: K-POP
+        category_else: その他
+
+      genre:
+        pops: ポップス・ダンス
+        rock: ロック・パンク
+        hiphop: ヒップホップ・ラップ
+        anime: アニメ・ゲーム
+        ballade: バラード・ブルース
+        folk: フォーク・カントリー
+        lovesong: ラブソング
+        jazz: ジャズ
+        instrumental: インスト
+        R&B: R&B
+        ganre_else: その他

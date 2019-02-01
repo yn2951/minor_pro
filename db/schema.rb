@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2019_01_19_145343) do
 
   create_table "topics", force: :cascade do |t|
     t.integer "user_id"
+    t.string "category", limit: 1, default: "0", null: false
+    t.string "genre", limit: 1, default: "0", null: false
     t.string "title"
     t.string "image"
     t.string "description"

@@ -11,7 +11,7 @@
           <% end %>
         </div>
         <div class="evaluation">
-          いいね！ <span><%= post_topic.counter.good_count %></span>　|　マイナー！ <span><%= post_topic.counter.minor_count %></span>
+          いいね！ <span id="good_count_<%= post_topic.id %>"><%= post_topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= post_topic.id %>"><%= post_topic.counter.minor_count %></span>
         </div>
         <div class="evaluate-button">
           <span id="good_<%= post_topic.id %>">
