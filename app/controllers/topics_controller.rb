@@ -14,11 +14,15 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @title = params[:title] ? params[:title] : "投稿日時が新しい"
+    @category = params[:category]
+    @genre = params[:genre]
     @keyword = params[:keyword]
+    @category_title = params[:category_title] ? params[:category_title] : "カテゴリー選択"
+    @genre_title = params[:genre_title] ? params[:genre_title] : "ジャンル選択"
+    @sort_title = params[:sort_title] ? params[:sort_title] : "投稿日時が新しい"
     joins_table = Topic.joins(:user, :counter)
     @rises = joins_table.order("totalize_result DESC", {created_at: :desc}).limit(5)
-    @topics = joins_table.search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users).page(params[:page]).per(15)
+    @topics = joins_table.category_search(@category).genre_search(@genre).search(@keyword).order(sort_column + ' ' + sort_direction, {created_at: :desc}).includes(:good_users, :minor_users, :bookmark_users).page(params[:page]).per(15)
   end
 
   def detail
@@ -56,7 +60,7 @@ class TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:title, :image, :description)
+    params.require(:topic).permit(:category, :genre, :title, :image, :description)
   end
 
   def set_topic

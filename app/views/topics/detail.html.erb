@@ -20,6 +20,9 @@
                 <%= render partial: "topics/bookmark", locals: {topic: @topic} %>
               </span>
           <% end %>
+          <div class="col-md-12">
+            カテゴリー： <%= @topic.category %>　ジャンル： <%= @topic.genre %>
+          </div>
         </div>
         <div class="col-md-8 col-md-offset-2 title">
           <%= @topic.title %>

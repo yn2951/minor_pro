@@ -1,0 +1,17 @@
+<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <%= @genre_title %>
+  <span class="caret"></span>
+</button>
+<ul class="dropdown-menu">
+  <li> <%= genrize :pops, "ポップス・ダンス" %> </li>
+  <li> <%= genrize :rock, "ロック・パンク" %> </li>
+  <li> <%= genrize :hiphop, "ヒップホップ・ラップ" %> </li>
+  <li> <%= genrize :anime, "アニメ・ゲーム" %> </li>
+  <li> <%= genrize :ballade, "バラード・ブルース" %> </li>
+  <li> <%= genrize :folk, "フォーク・カントリー" %> </li>
+  <li> <%= genrize :lovesong, "ラブソング" %> </li>
+  <li> <%= genrize :jazz, "ジャズ" %> </li>
+  <li> <%= genrize :instrumental, "インスト" %> </li>
+  <li> <%= genrize :RB, "R&B" %> </li>
+  <li> <%= genrize :genre_else, "その他" %> </li>
+</ul>

@@ -1,0 +1,10 @@
+<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <%= @category_title %>
+  <span class="caret"></span>
+</button>
+<ul class="dropdown-menu">
+  <li> <%= categorize :japanese, "邦楽" %> </li>
+  <li> <%= categorize :english, "洋楽" %> </li>
+  <li> <%= categorize :kpop, "K-POP" %> </li>
+  <li> <%= categorize :category_else, "その他" %> </li>
+</ul>

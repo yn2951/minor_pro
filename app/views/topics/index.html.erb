@@ -11,9 +11,19 @@
       </div>
       <div class="row col-md-6 topics-wrapper">
         <div class="row search-contents">
-          <div class="col-md-6">
+          <div class="col-md-3">
+            <%= render partial: "topics/category" %>
+          </div>
+          <div class="col-md-3">
+            <%= render partial: "topics/genre" %>
+          </div>
+          <div class="col-md-3">
             <%= form_tag topics_path, method: :get do %>
               <div class="input-group">
+                <%= hidden_field_tag :category, @category %>
+                <%= hidden_field_tag :category_title, @category_title %>
+                <%= hidden_field_tag :genre, @genre %>
+                <%= hidden_field_tag :genre_title, @genre_title %>
                 <%= text_field_tag :keyword, @keyword, placeholder: '', class: 'form-control'%>
                 <span class="input-group-btn">
                   <%= submit_tag '検索', class: 'btn btn-default' %>
@@ -21,7 +31,7 @@
               </div>
             <% end %>
           </div>
-          <div class="col-md-6 dropdown">
+          <div class="col-md-3 dropdown">
             <%= render partial: "topics/sort" %>
           </div>
         </div>
