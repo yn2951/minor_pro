@@ -24,24 +24,25 @@
             <% end %>
           </div>
           <div>
-          <div class="col-md-1 col-md-offset-5">
-            <%= link_to '投稿', new_topic_path, class: 'btn btn-link post-btn' %>
+            <div class="col-md-1 col-md-offset-5">
+              <%= link_to '投稿', new_topic_path, class: 'btn btn-link post-btn' %>
+            </div>
+            <% if logged_in? %>
+              <div class="col-md-1">
+                <%= link_to 'マイページ', users_path(id: current_user.id), class: 'btn btn-link' %>
+              </div>
+              <div class="col-md-1">
+                <%= link_to 'ログアウト', logout_path, class: 'btn btn-link', method: :delete, data: {confirm: 'ログアウトしますか？'} %>
+              </div>
+            <% else %>
+              <div class="col-md-1">
+                <%= link_to '新規登録', new_user_path, class: 'btn btn-link' %>
+              </div>
+              <div class="col-md-1">
+                <%= link_to 'ログイン', login_path(login: ''), class: 'btn btn-link' %>
+              </div>
+            <% end %>
           </div>
-          <% if logged_in? %>
-            <div class="col-md-1">
-              <%= link_to 'マイページ', users_path(id: current_user.id), class: 'btn btn-link' %>
-            </div>
-            <div class="col-md-1">
-              <%= link_to 'ログアウト', logout_path, class: 'btn btn-link', method: :delete, data: {confirm: 'ログアウトしますか？'} %>
-            </div>
-          <% else %>
-            <div class="col-md-1">
-              <%= link_to '新規登録', new_user_path, class: 'btn btn-link' %>
-            </div>
-            <div class="col-md-1">
-              <%= link_to 'ログイン', login_path(login: ''), class: 'btn btn-link' %>
-            </div>
-          <% end %>
         </div>
       </div>
     </nav>

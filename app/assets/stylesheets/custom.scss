@@ -138,11 +138,6 @@ ul {
   font-size: 1.2rem;
 }
 
-.rises-wrapper {
-  padding-right: 15px;
-  border-right: solid 1px #eee;
-}
-
 .rise-unit {
   margin-top: 15px;
 }
@@ -172,7 +167,11 @@ ul {
 }
 
 .dropdown-toggle {
-  min-width: 180px;
+  width: 180px;
+}
+
+.search-form {
+  width: 240px;
 }
 
 .main-contents {
