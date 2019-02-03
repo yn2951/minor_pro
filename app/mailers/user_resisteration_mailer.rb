@@ -1,5 +1,5 @@
 class UserResisterationMailer < ApplicationMailer
-  default from: 'マイナープロ'
+  default from: 'minor-pro@gmail.com'
 
   def welcome(user)
     @user = user
