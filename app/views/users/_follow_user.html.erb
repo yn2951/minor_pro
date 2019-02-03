@@ -1,10 +1,10 @@
 <div class="page">
   <% @following_users.each do |following_user| %>
-    <div class="row col-md-6 col-md-offset-3 topic-unit">
-      <div class="pull-left">
+    <div class="topic-unit col-md-3 pull-left">
+      <div class="col-md-12 icon-wrapper">
         <%= image_tag following_user.profile.image.url, class: 'img-responsive icon list-icon' %>
       </div>
-      <div class="pull-left">
+      <div class="col-md-12">
         <div class="title">
           <%= link_to users_path(id: following_user) do %>
               <%= following_user.name %>

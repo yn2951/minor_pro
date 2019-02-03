@@ -12,11 +12,11 @@ class UsersController < ApplicationController
 
     @templete = params[:templete]
     if @templete == 'bookmark_topic'
-      @bookmark_topics = @user.bookmark_topics.order('created_at DESC').includes(:good_users, :minor_users, :bookmark_users).page(params[:page]).per(15)
+      @bookmark_topics = @user.bookmark_topics.order('created_at DESC').includes(:good_users, :minor_users, :bookmark_users).page(params[:page]).per(32)
     elsif @templete == 'follow_user'
-      @following_users = User.joins(:follows).where(follows: {follower_id: @user}).order('created_at DESC').page(params[:page]).per(15)
+      @following_users = User.joins(:follows).where(follows: {follower_id: @user}).order('created_at DESC').page(params[:page]).per(32)
     else
-      @post_topics = @user.topics.order('created_at DESC').page(params[:page]).per(15)
+      @post_topics = @user.topics.order('created_at DESC').page(params[:page]).per(32)
     end
   end
 

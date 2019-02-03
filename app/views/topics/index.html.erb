@@ -19,9 +19,9 @@
       </div>
     </div>
     <div class="row rises-wrapper">
-      <div class="rises-contents">
-        <div class="row text-center">
-          <h5>急上昇トピック</h5>
+      <div class="col-md-10 col-md-offset-1 rises-contents">
+        <div class="col-md-12 text-left">
+          <h3 class="head">急上昇トピック</h3>
         </div>
         <div class="row">
           <%= render partial: "topics/rise" %>
@@ -29,9 +29,14 @@
       </div>
     </div>
     <div class="row topics-wrapper">
-      <div class="row pages topics-contents">
-        <%= render partial: "topics/page" %>
-        <%= paginate @topics %>
+      <div class="col-md-10 col-md-offset-1 pages topics-contents">
+        <div class="col-md-12 text-left">
+          <h3 class="head">投稿一覧</h3>
+        </div>
+        <div class="row">
+          <%= render partial: "topics/page" %>
+          <%= paginate @topics %>
+        </div>
       </div>
     </div>
   </div>

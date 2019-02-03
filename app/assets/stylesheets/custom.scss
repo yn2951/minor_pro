@@ -50,7 +50,7 @@ ul {
 }
 
 .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
-  padding: 90px 0;
+  padding: 110px 0;
 }
 
 .new-users-wrapper, .new-topics-wrapper, .login-wrapper {
@@ -96,20 +96,20 @@ ul {
   display: none;
 }
 
-.search-contents {
-  margin-bottom: 15px;
+.topics-contents, .rises-contents {
+  margin-top: 35px;
+  font-size: 1.2rem;
 }
 
-.topics-wrapper {
-  margin-left: 30px;
+.head {
+  font-weight: 500;
 }
 
 .topic-unit {
-  padding: 18px 0;
-  border-bottom: solid 1px #eee;
+  padding: 10px 0;
 }
 
-.page .title {
+.title {
   font-size: 1.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -125,13 +125,18 @@ ul {
   font-size: 1.2rem;
 }
 
+.thumbnail-wrapper {
+  max-width: 244px;
+  max-height: 151px;
+  overflow: hidden;
+}
+
 .topic-unit .topic-thumbnail {
-  max-height: 70px;
-  max-width: 70px;
-  height: 100%;
-  width: auto;
+  min-height: 155px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
-  margin-right: 15px;
+  border-radius: 3px;
 }
 
 .page .evaluate-button {
@@ -147,7 +152,7 @@ ul {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   line-height: 1.2rem;
   max-height: 24px;
   max-width: 300px;
@@ -174,22 +179,15 @@ ul {
   width: 240px;
 }
 
-.main-contents {
-  text-align: center;
+.detail-contents {
 
   .info {
     font-size: 1.5rem;
     margin-bottom: 10px;
   }
 
-  .title, .description {
+  .detail-title, .description {
     font-size: 2rem;
-  }
-
-  .image {
-    max-width: 400px;
-    height: auto;
-    margin: 20px auto;
   }
 
   .description {
@@ -198,7 +196,7 @@ ul {
 }
 
 .comment-count {
-  margin-bottom: 30px;
+  margin: 10px 0;
 }
 
 .comment-unit {
@@ -228,6 +226,10 @@ ul {
   max-width: 720px;
 }
 
+#list-contents {
+  margin-top: 35px;
+}
+
 .mypage-icon {
   max-height: 150px;
   max-width: 150px;
@@ -237,8 +239,8 @@ ul {
 }
 
 .list-icon {
-  max-height: 70px;
-  max-width: 70px;
+  max-height: 200px;
+  max-width: 200px;
   height: 100%;
   width: auto;
   object-fit: cover;

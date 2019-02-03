@@ -1,19 +1,17 @@
 <div class="page">
   <% @bookmark_topics.each do |bookmark_topic| %>
-    <div class="row col-md-6 col-md-offset-3 topic-unit">
-      <div class="pull-left">
-        <%= image_tag bookmark_topic.image.url, class: 'img-responsive bookmark-topic-thumbnail' %>
+    <div class="topic-unit col-md-3 pull-left">
+      <div class="col-md-12 thumbnail-wrapper">
+        <%= image_tag bookmark_topic.image.url, class: 'img-responsive topic-thumbnail' %>
       </div>
-      <div class="pull-left">
+      <div class="col-md-12">
         <div class="title">
           <%= link_to detail_path(id: bookmark_topic.id) do %>
-              <%= bookmark_topic.title %>
+            <%= bookmark_topic.title %>
           <% end %>
         </div>
         <div class="name">
-          <% if bookmark_topic.user != current_user %>
-            <%= link_to bookmark_topic.user.name, users_path(id: bookmark_topic.user) %>
-          <% end %>
+          by <%= link_to bookmark_topic.user.name, users_path(id: bookmark_topic.user) %>
         </div>
         <div class="evaluation">
           いいね！ <span id="good_count_<%= bookmark_topic.id %>"><%= bookmark_topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= bookmark_topic.id %>"><%= bookmark_topic.counter.minor_count %></span>
