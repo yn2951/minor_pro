@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     if User.find_by(email: @user.email).nil?
       if @user.save && profile.save
-        UserResisterationMailer.welcome(@user).deliver_now
+        # UserResisterationMailer.welcome(@user).deliver_now
         redirect_to root_path, success: 'メールを送信しました'
       else
         redirect_to new_user_path, danger: '登録に失敗しました'
