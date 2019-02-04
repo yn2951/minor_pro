@@ -23,29 +23,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if User.find_by(email: @user.email).nil?
-      if @user.save
-        UserResisterationMailer.welcome(@user).deliver_now
-        redirect_to root_path, success: 'メールを送信しました'
-      else
-        redirect_to new_user_path, danger: '登録に失敗しました'
-      end
+    if @user.save
+      UserResisterationMailer.welcome(@user).deliver_now
+      redirect_to root_path, success: 'メールを送信しました'
     else
-      redirect_to new_user_path, danger: 'メールアドレスが既に登録されています'
-    end
-  end
-
-  def resisteration_done
-    user = User.find(request.url.split('/').last.to_i)
-    if user.profile.nil?
-      profile = user.build_profile
-      if profile.save
-        redirect_to root_path, success: '登録が完了しました'
-      else
-        redirect_to root_path, danger: '登録に失敗しました'
-      end
-    else
-      redirect_to root_path, danger: '既に登録されています'
+      redirect_to new_user_path, danger: '登録に失敗しました'
     end
   end
 

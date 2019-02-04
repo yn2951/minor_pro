@@ -14,7 +14,11 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def self.remove_same_email(user)
+    where(email: user.email).where.not(id: user.id).delete_all
+  end
+
   def self.resisteration_reset
-    users = User.left_joins(:profile).where(profile: {id: nil}).where("created_at<?", Time.now-(1.minites)).delete_all
+    users = User.left_joins(:profile).where(profile: {id: nil}).delete_all
   end
 end

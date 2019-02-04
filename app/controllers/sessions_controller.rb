@@ -1,6 +1,22 @@
 class SessionsController < ApplicationController
   before_action :twitter_params, only: [:twitter]
 
+  def resisteration_done
+    user = User.find(request.url.split('/').last.to_i)
+    if user.profile.nil?
+      User.remove_same_email(user)
+      profile = user.build_profile
+      if profile.save
+        log_in user
+        redirect_to root_path, success: '登録が完了しました'
+      else
+        redirect_to root_path, danger: '登録に失敗しました'
+      end
+    else
+      redirect_to root_path, danger: '既に登録されています'
+    end
+  end
+
   def new
     if params[:login].nil?
       flash.now[:success] = 'ログインしてください'
@@ -9,9 +25,14 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(session_params)
-    if user && user.authenticate(params[:session][:password]) && user.profile
-      log_in user
-      redirect_to root_path, success: 'ログインに成功しました'
+    if user && user.authenticate(params[:session][:password])
+      if user.profile
+        log_in user
+        redirect_to root_path, success: 'ログインしました'
+      else
+        flash.now[:danger] = '登録が完了していません'
+        render :new
+      end
     else
       flash.now[:danger] = 'ログインに失敗しました'
       render :new
@@ -59,7 +80,7 @@ class SessionsController < ApplicationController
     @image = informations[:image]
     @name = informations[:nickname]
     @email = informations[:email]
-    @password = "1234qwer"
-    @password_confirmation = "1234qwer"
+    @password = informations[:password]
+    @password_confirmation = informations[:password]
   end
 end
