@@ -48,7 +48,6 @@ gem 'fog'
 
 gem 'enum_help'
 
-#環境変数を扱う
 gem 'dotenv-rails'
 
 gem 'kaminari'

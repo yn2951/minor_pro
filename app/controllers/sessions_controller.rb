@@ -80,7 +80,7 @@ class SessionsController < ApplicationController
     @image = informations[:image]
     @name = informations[:nickname]
     @email = informations[:email]
-    @password = informations[:password]
-    @password_confirmation = informations[:password]
+    @password = "1234qwer"
+    @password_confirmation = "1234qwer"
   end
 end

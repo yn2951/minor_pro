@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_topic, only: [:edit, :update]
+  before_action :keys, only: [:index]
 
   def new
     if !logged_in?
@@ -65,6 +66,11 @@ class TopicsController < ApplicationController
 
   def set_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def keys
+    @category_keys = Topic.categories_i18n
+    @genre_keys = Topic.genres_i18n
   end
 
   def sort_direction

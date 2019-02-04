@@ -3,8 +3,8 @@
   <span class="caret"></span>
 </button>
 <ul class="dropdown-menu">
-  <li> <%= categorize :japanese, "邦楽" %> </li>
-  <li> <%= categorize :english, "洋楽" %> </li>
-  <li> <%= categorize :kpop, "K-POP" %> </li>
-  <li> <%= categorize :category_else, "その他" %> </li>
+  <li> <%= categorize :japanese, @category_keys[:japanese] %> </li>
+  <li> <%= categorize :english, @category_keys[:english] %> </li>
+  <li> <%= categorize :kpop, @category_keys[:kpop] %> </li>
+  <li> <%= categorize :category_else, @category_keys[:category_else] %> </li>
 </ul>

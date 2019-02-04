@@ -16,7 +16,7 @@ class Topic < ApplicationRecord
   mount_uploader :image, TopicImageUploader
 
   enum category: {japanese: 0, english: 1, kpop: 2, category_else: 3}
-  enum genre: {pops: 0, rock: 1, hiphop: 2, anime: 3, ballade: 4, folk: 5, lovesong: 6, jazz: 7, instrumental: 8, RB: 9, ganre_else: 10}
+  enum genre: {pops: 0, rock: 1, hiphop: 2, anime: 3, ballade: 4, folk: 5, lovesong: 6, jazz: 7, instrumental: 8, RB: 9, genre_else: 10}
 
   scope :category_search, -> (value) {
     where(category: value) if value.present?

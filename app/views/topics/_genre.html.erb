@@ -3,15 +3,15 @@
   <span class="caret"></span>
 </button>
 <ul class="dropdown-menu">
-  <li> <%= genrize :pops, "ポップス・ダンス" %> </li>
-  <li> <%= genrize :rock, "ロック・パンク" %> </li>
-  <li> <%= genrize :hiphop, "ヒップホップ・ラップ" %> </li>
-  <li> <%= genrize :anime, "アニメ・ゲーム" %> </li>
-  <li> <%= genrize :ballade, "バラード・ブルース" %> </li>
-  <li> <%= genrize :folk, "フォーク・カントリー" %> </li>
-  <li> <%= genrize :lovesong, "ラブソング" %> </li>
-  <li> <%= genrize :jazz, "ジャズ" %> </li>
-  <li> <%= genrize :instrumental, "インスト" %> </li>
-  <li> <%= genrize :RB, "R&B" %> </li>
-  <li> <%= genrize :genre_else, "その他" %> </li>
+  <li> <%= genrize :pops, @genre_keys[:pops] %> </li>
+  <li> <%= genrize :rock, @genre_keys[:rock] %> </li>
+  <li> <%= genrize :hiphop, @genre_keys[:hiphop] %> </li>
+  <li> <%= genrize :anime, @genre_keys[:anime] %> </li>
+  <li> <%= genrize :ballade, @genre_keys[:ballade] %> </li>
+  <li> <%= genrize :folk, @genre_keys[:folk] %> </li>
+  <li> <%= genrize :lovesong, @genre_keys[:lovesong] %> </li>
+  <li> <%= genrize :jazz, @genre_keys[:jazz] %> </li>
+  <li> <%= genrize :instrumental, @genre_keys[:instrumental] %> </li>
+  <li> <%= genrize :RB, @genre_keys[:RB] %> </li>
+  <li> <%= genrize :genre_else, @genre_keys[:genre_else] %> </li>
 </ul>
