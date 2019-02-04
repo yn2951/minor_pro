@@ -19,6 +19,6 @@ class User < ApplicationRecord
   end
 
   def self.resisteration_reset
-    users = User.left_joins(:profile).where(profile: {id: nil}).delete_all
+    left_joins(:profile).where(profiles: {id: nil}).where("users.created_at > ?", 7.days.ago).delete_all
   end
 end

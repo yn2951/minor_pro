@@ -6,10 +6,13 @@
   <body>
     <h1><%= @user.name %>様</h1>
     <% if Rails.env.production? %>
-      <p><a href="https://murmuring-mountain-27619.herokuapp.com/resisteration/<%= @user.id %>">こちら</a>から登録の完了をよろしくお願いします</p><br>
+      <p><a href="https://murmuring-mountain-27619.herokuapp.com/resisteration/<%= @user.id %>">こちら</a>から登録の完了をよろしくお願いします。</p><br>
     <% else %>
-      <p><a href="http://localhost:3000/resisteration/<%= @user.id %>">こちら</a>から登録の完了をよろしくお願いします</p><br>
+      <p><a href="http://localhost:3000/resisteration/<%= @user.id %>">こちら</a>から登録の完了をよろしくお願いします。</p><br>
     <% end %>
-    <p>※本メールの有効期限は７日間です。期限内に登録が完了されない場合、登録内容は破棄されます。</p>
+    <p>※アカウントの作成は、一つのメールアドレスに対し一つのみ可能です。同一のメールアドレスで新しくアカウントを作成した場合、古いアカウントは破棄されます。</p>
+    <p>※パスワードの復元・変更はできません。パスワードを忘れた場合、新しいアカウントの作成をお願いします（アカウントデータの引き継ぎはできません）。</p>
+    <p>※登録完了の有効期限は７日間です。期限内に登録が完了されない場合、登録内容は破棄されます。</p>
+    <p>※このメールは送信専用です。</p>
   </body>
 </html>

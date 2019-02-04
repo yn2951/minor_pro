@@ -5,6 +5,6 @@ every 1.minutes do
   runner "Counter.totalize_reset"
 end
 
-every 1.minutes do
+every 2.minutes do
   runner "User.resisteration_reset"
 end
