@@ -21,9 +21,9 @@ class TopicsController < ApplicationController
     @category_title = params[:category_title] ? params[:category_title] : "カテゴリー選択"
     @genre_title = params[:genre_title] ? params[:genre_title] : "ジャンル選択"
     @sort_title = params[:sort_title] ? params[:sort_title] : "投稿日時が新しい"
-    joins_table = Topic.joins(:user, :counter).includes(:good_users, :minor_users, :bookmark_users).category_search(@category).genre_search(@genre).search(@keyword)
-    @rises = joins_table.order("totalize_result DESC", {created_at: :desc}).limit(4)
-    @topics = joins_table.order(sort_column + ' ' + sort_direction, {created_at: :desc}).page(params[:page]).per(32)
+    search_table = Topic.search_table(@category, @genre, @keyword)
+    @rises = search_table.order("totalize_result DESC", "good_count DESC", {created_at: :desc}).limit(4)
+    @topics = search_table.sort_table(sort_column, sort_direction).page(params[:page]).per(32)
   end
 
   def detail

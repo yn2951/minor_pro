@@ -4,7 +4,7 @@ class Topic < ApplicationRecord
   validates :description, presence: true, length: { in: 1..400 }
 
   belongs_to :user
-  has_one :counter, dependent: :destroy
+  has_one  :counter, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
   has_many :minors, dependent: :destroy
@@ -18,6 +18,10 @@ class Topic < ApplicationRecord
   enum category: {japanese: 0, english: 1, kpop: 2, category_else: 3}
   enum genre: {pops: 0, rock: 1, hiphop: 2, anime: 3, ballade: 4, folk: 5, lovesong: 6, jazz: 7, instrumental: 8, RB: 9, genre_else: 10}
 
+  def self.joins_table
+    joins(:user, :counter).includes(:good_users, :minor_users, :bookmark_users)
+  end
+
   scope :category_search, -> (value) {
     where(category: value) if value.present?
   }
@@ -26,13 +30,13 @@ class Topic < ApplicationRecord
     where(genre: value) if value.present?
   }
 
-  scope :search, -> (keyword) {
+  scope :keyword_search, -> (keyword) {
     if keyword.present?
       words = keyword.to_s.gsub(/(?:[[:space:]%_])+/, " ").split(" ")
       title = (["topics.title LIKE ?"] * words.size).join(" AND ")
       description = (["topics.description LIKE ?"] * words.size).join(" AND ")
       name = (["users.name LIKE ?"] * words.size).join(" AND ")
-      query = title + ' OR ' + description + ' OR ' + name
+      query = title + " OR " + description + " OR " + name
 
       where(
          query,
@@ -42,4 +46,12 @@ class Topic < ApplicationRecord
        )
     end
   }
+
+  def self.search_table(category, genre, keyword)
+    joins_table.category_search(category).genre_search(genre).keyword_search(keyword)
+  end
+
+  def self.sort_table(column, direction)
+    order(column + ' ' + direction, {created_at: :desc})
+  end
 end

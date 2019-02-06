@@ -2,7 +2,9 @@
   <% @topics.each do |topic| %>
     <div class="topic-unit col-md-3 pull-left">
       <div class="col-md-12 thumbnail-wrapper" >
-        <%= image_tag topic.image.url, class: 'img-responsive topic-thumbnail' %>
+        <%= link_to detail_path(id: topic.id) do %>
+          <%= image_tag topic.image.url, class: 'img-responsive topic-thumbnail' %>
+        <% end %>
       </div>
       <div class="col-md-12">
         <div class="title">
