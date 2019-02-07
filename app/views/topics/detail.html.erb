@@ -14,22 +14,30 @@
             <%= link_to @topic.user.name, users_path(id: @topic.user) %>
             　|　いいね！ <span id="good_count_<%= @topic.id %>"><%= @topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= @topic.id %>"><%= @topic.counter.minor_count %></span>
             <% if @topic.user == current_user %>
-            　|　<%= link_to '編集する', edit_topic_path(id: @topic.id), class: 'btn btn-link' %>
+              <div class="detail-evaluate-button">
+              　<span class="line">|　</span>
+                <span>
+                  <%= link_to '編集する', edit_topic_path(id: @topic.id), class: 'btn btn-link edit-link' %>
+                </span>
+              </div>
             <% else %>
-            　|　
-                <span id="good_<%= @topic.id %>">
-                  <%= render partial: "topics/good", locals: {topic: @topic} %>
-                </span>
-                <span id="minor_<%= @topic.id %>">
-                  <%= render partial: "topics/minor", locals: {topic: @topic} %>
-                </span>
-                <span id="bookmark_<%= @topic.id %>">
-                  <%= render partial: "topics/bookmark", locals: {topic: @topic} %>
-                </span>
+              <div class="detail-evaluate-button">
+                <span class="line">　|　</span>
+                    <span id="good_<%= @topic.id %>">
+                      <%= render partial: "topics/good", locals: {topic: @topic} %>
+                    </span>
+                    <span id="minor_<%= @topic.id %>">
+                      <%= render partial: "topics/minor", locals: {topic: @topic} %>
+                    </span>
+                    <span id="bookmark_<%= @topic.id %>">
+                      <%= render partial: "topics/bookmark", locals: {topic: @topic} %>
+                    </span>
+              </div>
             <% end %>
           </div>
           <div class="col-md-12 info">
-            カテゴリー： <%= @topic.category_i18n %>　ジャンル： <%= @topic.genre_i18n %>
+            <div class="category">カテゴリー： <%= @topic.category_i18n %>　</div>
+            <div class="genre">ジャンル： <%= @topic.genre_i18n %></div>
           </div>
           <div class="col-md-12 description">
             <p><%= @topic.description %></p>

@@ -1,10 +1,10 @@
 <div class="index-users-wrapper">
   <div class="container">
     <div class="row user-info">
-      <div class="pull-left col-md-2 col-md-offset-2">
+      <div class="col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-2">
         <%= image_tag @profile.image.url, class: 'img-responsive icon mypage-icon' %>
       </div>
-      <div class="pull-left col-md-6">
+      <div class="pull-left col-md-8 user-info-text">
         <div class="name">
           <%= @user.name %>
         </div>
@@ -27,13 +27,13 @@
     </div>
     <div class="row col-md-10 col-md-offset-1 text-center list-header">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-xs-4 col-md-4">
           <%= link_to '投稿', users_path(template: 'post_topic', id: @user) %>
         </div>
-        <div class="col-md-4">
+        <div class="col-xs-4 col-md-4">
           <%= link_to '保存', users_path(templete: 'bookmark_topic', id: @user) %>
         </div>
-        <div class="col-md-4">
+        <div class="col-xs-4 col-md-4">
           <%= link_to 'フォロー', users_path(templete: 'follow_user', id: @user) %>
         </div>
       </div>

@@ -33,11 +33,13 @@ ul {
 
 .navbar-transparent {
   margin-bottom: 0px;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.8);
 
   .navbar-brand {
     max-width: 200px;
     height: auto;
+    margin-left: -5vw;
+    margin-top: 5vw;
   }
 
   a {
@@ -50,7 +52,7 @@ ul {
 }
 
 .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
-  padding: 110px 0;
+  padding: 155px 0;
 }
 
 .new-users-wrapper, .new-topics-wrapper, .login-wrapper {
@@ -115,6 +117,7 @@ ul {
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 470px;
+  margin-top: 5px;
 }
 
 .page .evaluation {
@@ -126,8 +129,7 @@ ul {
 }
 
 .thumbnail-wrapper {
-  max-width: 244px;
-  max-height: 151px;
+
   overflow: hidden;
 }
 
@@ -176,7 +178,7 @@ ul {
 }
 
 .search-form {
-  width: 240px;
+  width: 180px;
 }
 
 .detail-contents {
@@ -188,15 +190,34 @@ ul {
 
   .detail-title, .description {
     font-size: 2rem;
+    margin-top: 10px;
   }
 
   .description {
     margin-bottom: 50px;
   }
+
+  .category, .genre {
+    margin-top: -5px;
+  }
+
+  .category {
+    margin-bottom: 5px;
+  }
+
+}
+
+.line {
+  display: none;
+}
+
+.detail-evaluate-button {
+  display: block;
+  margin-top: 5px;
 }
 
 .comment-count {
-  margin: 10px 0;
+  margin: 70px 0 15px;
 }
 
 .comment-unit {
@@ -244,7 +265,6 @@ ul {
   height: 100%;
   width: auto;
   object-fit: cover;
-  margin-right: 15px;
 }
 
 .bookmark-topic-thumbnail, .post-topic-thumbnail {
@@ -274,4 +294,111 @@ ul {
 
 .destroy-topic {
   margin-top: 50px;
+}
+
+.post-head {
+  margin-bottom: 30px;
+}
+
+.resisteration-head {
+  margin-bottom: 30px;
+}
+
+.login-head {
+  margin-bottom: 30px;
+}
+
+.profile-head {
+  margin-bottom: 30px;
+}
+
+.edit-link {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.user-unit {
+  padding-left: 4.5vw;
+}
+
+.second-stage {
+  margin-top: 3.5vw;
+}
+
+.search-contents {
+  margin-left: -8vw;
+}
+
+@media (min-width: 544px) {
+
+  .thumbnail-wrapper {
+    max-width: 244px;
+    max-height: 151px;
+  }
+
+  .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
+    padding: 110px 0;
+  }
+
+  .line {
+    display: inline;
+  }
+
+  .detail-evaluate-button {
+    display: inline;
+  }
+
+  .search-form {
+    width: 240px;
+  }
+
+  .detail-contents {
+
+    .detail-title {
+      margin-top: 0;
+    }
+
+    .description {
+      margin-top: 0;
+    }
+
+    .category, .genre {
+      display: inline;
+    }
+
+    .edit-link {
+      float: none;
+    }
+
+  }
+
+  .user-info-text {
+    display: inline;
+  }
+
+  .user-unit {
+    padding-left: 0;
+  }
+
+  .second-stage {
+    margin-top: 0;
+  }
+
+  .search-contents {
+    margin-left: 0;
+  }
+
+  .navbar-transparent {
+
+    .navbar-brand {
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+
+  .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
+    padding: 130px 0;
+  }
+
 }

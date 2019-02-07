@@ -2,11 +2,15 @@
   <% @comments.each do |comment| %>
     <div class="row comment-unit">
       <div class="pull-left">
-        <%= image_tag comment.user.profile.image.url, class: 'img-responsive icon commenter-icon' %>
+        <%= link_to users_path(id: comment.user_id) do %>
+          <%= image_tag comment.user.profile.image.url, class: 'img-responsive icon commenter-icon' %>
+        <% end %>
       </div>
       <div class="pull-left">
         <div class="commenter-name">
-          <%= comment.user.name %>
+          <%= link_to users_path(id: comment.user_id) do %>
+            <%= comment.user.name %>
+          <% end %>
         </div>
         <div class="comment-text">
           <%= comment.text %>

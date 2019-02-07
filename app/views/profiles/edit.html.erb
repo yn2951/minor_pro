@@ -1,7 +1,7 @@
 <div class="new-users-wrapper">
   <div class="container">
     <div class="row">
-      <h3 class="col-md-6 col-md-offset-3 text-center">プロフィール</h3>
+      <h3 class="col-md-6 col-md-offset-3 text-center profile-head">プロフィール</h3>
 
       <%= form_for @profile, url: profiles_update_path do |f| %>
         <div class="form-group col-md-6 col-md-offset-3">
@@ -14,7 +14,7 @@
           <%= f.text_area :introduce, class: 'form-control' %>
         </div>
 
-        <%= f.submit '編集内容を保存する', class: 'btn btn-default col-md-2 col-md-offset-5' %>
+        <%= f.submit '編集内容を保存する', class: 'btn btn-default col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-5' %>
       <% end %>
     </div>
   </div>
