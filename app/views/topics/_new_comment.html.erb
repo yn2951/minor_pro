@@ -1,0 +1,17 @@
+<div class="row comment-unit">
+  <div class="pull-left">
+    <%= link_to users_path(id: comment.user_id) do %>
+      <%= image_tag comment.user.profile.image.url, class: 'img-responsive icon commenter-icon' %>
+    <% end %>
+  </div>
+  <div class="pull-left">
+    <div class="commenter-name">
+      <%= link_to users_path(id: comment.user_id) do %>
+        <%= comment.user.name %>
+      <% end %>
+    </div>
+    <div class="comment-text">
+      <%= comment.text %>
+    </div>
+  </div>
+</div>

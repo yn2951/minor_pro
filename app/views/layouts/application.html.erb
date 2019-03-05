@@ -12,9 +12,9 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
-    <% end %>
+    <div id="flash_messages">
+      <%= render partial: "layouts/flash" %>
+    </div>
 
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent navbar-custom">
       <div class="container">
@@ -49,11 +49,6 @@
     </nav>
 
     <%= yield %>
-
-    <script>
-      $(function(){
-        $(".alert").fadeOut(1500);
-      });
-    </script>
+    
   </body>
 </html>
