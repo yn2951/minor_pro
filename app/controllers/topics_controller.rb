@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
 
   def new
     if !user_signed_in?
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, notice: 'ログインして下さい。'
     else
       @topic = Topic.new
     end
