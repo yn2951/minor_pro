@@ -8,18 +8,18 @@ class SessionsController < ApplicationController
       profile = user.build_profile
       if profile.save
         log_in user
-        redirect_to root_path, success: '登録が完了しました'
+        redirect_to root_path, notice: '登録が完了しました'
       else
-        redirect_to root_path, danger: '登録に失敗しました'
+        redirect_to root_path, alert: '登録に失敗しました'
       end
     else
-      redirect_to root_path, danger: '既に登録されています'
+      redirect_to root_path, alert: '既に登録されています'
     end
   end
 
   def new
     if params[:login].nil?
-      flash.now[:success] = 'ログインしてください'
+      flash.now[:notice] = 'ログインしてください'
     end
   end
 
@@ -28,13 +28,13 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       if user.profile
         log_in user
-        redirect_to root_path, success: 'ログインしました'
+        redirect_to root_path, notice: 'ログインしました'
       else
-        flash.now[:danger] = '登録が完了していません'
+        flash.now[:alert] = '登録が完了していません'
         render :new
       end
     else
-      flash.now[:danger] = 'ログインに失敗しました'
+      flash.now[:alert] = 'ログインに失敗しました'
       render :new
     end
   end
@@ -50,9 +50,9 @@ class SessionsController < ApplicationController
     end
 
     if log_in user
-      redirect_to root_path, success: 'ログインしました'
+      redirect_to root_path, notice: 'ログインしました'
     else
-      redirect_to root_path, danger: 'ログインに失敗しました'
+      redirect_to root_path, alert: 'ログインに失敗しました'
     end
   end
 

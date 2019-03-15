@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if user_signed_in? %>
   <% if !user.follows.where(follower_id: current_user).present? %>
     <%= link_to follows_path(user_id: user), method: :post, remote: true do %>
       <i class="far fa-thumbs-up"></i>
@@ -9,7 +9,7 @@
     <% end %>
   <% end %>
 <% else %>
-  <%= link_to login_path do %>
+  <%= link_to new_user_session_path do %>
     <i class="far fa-thumbs-up"></i>
   <% end %>
 <% end %>

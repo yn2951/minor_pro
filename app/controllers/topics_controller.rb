@@ -4,8 +4,8 @@ class TopicsController < ApplicationController
   before_action :keys, only: [:index]
 
   def new
-    if !logged_in?
-      redirect_to login_path
+    if !user_signed_in?
+      redirect_to new_user_session_path
     else
       @topic = Topic.new
     end
@@ -15,6 +15,11 @@ class TopicsController < ApplicationController
   end
 
   def index
+    if current_user && current_user.profile.nil?
+      User.remove_same_email(current_user)
+      current_user.build_profile.save
+    end
+
     @category = params[:category]
     @genre = params[:genre]
     @keyword = params[:keyword]
@@ -37,17 +42,17 @@ class TopicsController < ApplicationController
     counter = topic.build_counter
 
     if topic.save && counter.save
-      redirect_to root_path, success: "投稿しました"
+      redirect_to root_path, notice: "投稿しました"
     else
-      redirect_to new_topic_path, danger: "投稿に失敗しました"
+      redirect_to new_topic_path, alert: "投稿に失敗しました"
     end
   end
 
   def update
     if @topic.update(topic_params)
-      redirect_to detail_path(id: params[:id]), success: '編集を保存しました'
+      redirect_to detail_path(id: params[:id]), notice: '編集を保存しました'
     else
-      flash.now[:danger] = '編集の保存に失敗しました'
+      flash.now[:alert] = '編集の保存に失敗しました'
       render :edit
     end
   end
@@ -56,7 +61,7 @@ class TopicsController < ApplicationController
     if params[:user_id] == current_user.id
       Topic.find(params[:topic_id]).delete
     end
-    redirect_to users_path(id: current_user.id), success: '投稿を削除しました'
+    redirect_to users_path(id: current_user.id), notice: '投稿を削除しました'
   end
 
   private

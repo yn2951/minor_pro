@@ -25,9 +25,9 @@ class UsersController < ApplicationController
 
     if @user.save
       UserResisterationMailer.welcome(@user).deliver_now
-      redirect_to root_path, success: 'メールを送信しました'
+      redirect_to root_path, notice: 'メールを送信しました'
     else
-      redirect_to new_user_path, danger: '登録に失敗しました'
+      redirect_to new_user_path, alert: '登録に失敗しました'
     end
   end
 

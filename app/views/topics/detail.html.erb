@@ -47,7 +47,7 @@
           <h4>コメント<span id="comment-count"><%= @topic.counter.comment_count %></span>件</h4>
         </div>
         <div class="col-md-12 comment-form">
-          <% if logged_in? %>
+          <% if user_signed_in? %>
             <%= form_for @comment, url: comments_path, remote: true do |f| %>
               <%= hidden_field_tag :topic_id, @topic.id %>
               <%= f.hidden_field :topic_id, :value => @topic.id %>
@@ -59,7 +59,7 @@
               </div>
             <% end %>
           <% else %>
-            <%= link_to 'ログインしてコメントする', login_path(login: ''), class: 'btn btn-default col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2' %>
+            <%= link_to 'ログインしてコメントする', new_user_session_path(login: ''), class: 'btn btn-default col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2' %>
           <% end %>
         </div>
         <div id="comments" class="col-md-12 pages">

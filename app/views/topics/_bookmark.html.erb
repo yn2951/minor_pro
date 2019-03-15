@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if user_signed_in? %>
   <% if !topic.bookmark_users.include?(current_user) %>
     <%= link_to bookmarks_path(topic_id: topic.id), method: :post, remote: true do %>
       <i class="far fa-bookmark"></i>
@@ -9,7 +9,7 @@
     <% end %>
   <% end %>
 <% else %>
-  <%= link_to login_path do %>
+  <%= link_to new_user_session_path do %>
     <i class="far fa-bookmark"></i>
   <% end %>
 <% end %>

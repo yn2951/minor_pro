@@ -18,6 +18,9 @@
           <div class="edit-button">
             <%= link_to "プロフィールを編集", profiles_edit_path %>
           </div>
+          <div class="edit-button">
+            <%= link_to "登録情報を編集", edit_user_registration_path %>
+          </div>
         <% else %>
           <div class="evaluate-button" id="follow_<%= @user.id %>">
             <%= render partial: "users/follow", locals: {user: @user} %>

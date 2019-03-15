@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   root 'topics#index'
 
+  devise_for :users, controllers: {
+    confirmations: 'users/confirmations',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations',
+    sessions:      'users/sessions',
+    unlocks:       'users/unlocks'
+  }
+
   resources :users
   resources :topics
 
@@ -16,7 +25,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  get '/auth/:provider/callback', to: 'sessions#twitter'
+  # get '/auth/:provider/callback', to: 'sessions#twitter'
 
   post '/comments', to: 'comments#create'
 

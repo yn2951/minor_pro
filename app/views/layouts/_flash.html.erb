@@ -1,9 +1,26 @@
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+<% if notice %>
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">close</span>
+    </button>
+    <%= notice %>
+  </div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">close</span>
+    </button>
+    <%= alert %>
+  </div>
 <% end %>
 
 <script>
   $(function(){
-    $(".alert").fadeOut(1500);
+    setTimeout(function(){
+      $('.alert').slideUp(430);
+    },1500);
   });
 </script>
