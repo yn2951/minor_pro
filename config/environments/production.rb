@@ -102,4 +102,6 @@ Rails.application.configure do
     user_name: ENV['Gmail_address'],
     password: ENV['Gmail_password']
   }
+
+  config.action_mailer.default_url_options = { host: 'https://murmuring-mountain-27619.herokuapp.com' }
 end
