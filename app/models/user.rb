@@ -45,4 +45,12 @@ class User < ApplicationRecord
              user.password = Devise.friendly_token[0,20]
            end
          end
+
+         def update_with_password(params, *options)
+          if encrypted_password.blank?            # encrypted_password属性が空の場合
+            update_attributes(params, *options)   # パスワード入力なしにデータ更新
+          else
+            super
+          end
+        end
 end

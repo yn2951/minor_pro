@@ -37,7 +37,7 @@
       <% end %>
 
       <% if params[:id] %>
-        <%= link_to '投稿を削除する', topics_path(user_id: @topic.user, topic_id: @topic.id), method: :delete, data: {confirm: '投稿を削除しますか？'}, class: 'destroy-topic text-center col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-5' %>
+        <%= link_to '投稿を削除する', topics_path(id: @topic.id), method: :delete, data: {confirm: '投稿を削除しますか？'}, class: 'destroy-topic text-center col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-5' %>
       <% end %>
 
     </div>

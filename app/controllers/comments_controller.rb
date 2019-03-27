@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     new_comment_count = set_counter.comment_count.next
     set_counter.update(comment_count: new_comment_count)
     @topic = @comment.topic
-    flash[:success] = "コメントを投稿しました"
+    flash[:notice] = "コメントを投稿しました"
   end
 
   def comment_params

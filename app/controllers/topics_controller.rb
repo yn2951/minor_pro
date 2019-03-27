@@ -58,9 +58,10 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    if params[:user_id] == current_user.id
-      Topic.find(params[:topic_id]).delete
+    if set_topic.user == current_user
+      set_topic.delete
     end
+
     redirect_to users_path(id: current_user.id), notice: '投稿を削除しました'
   end
 
