@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
          validates :name, presence: true, length: { in: 1..15 }
          validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-         validates :password, presence: true, length: { in: 8..32 }, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+         validates :password, presence: true, length: { in: 8..32 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
 
          has_one  :profile, dependent: :destroy
          has_many :topics, dependent: :destroy

@@ -5,11 +5,11 @@ one:
   category: 1
   title: MyString
   image: MyString
-  text: MyString
+  description: MyString
 
 two:
   user_id: 1
   category: 1
   title: MyString
   image: MyString
-  text: MyString
+  description: MyString
