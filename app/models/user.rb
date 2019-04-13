@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
          validates :name, presence: true, length: { in: 1..15 }
          validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-         validates :password, presence: true, length: { in: 8..32 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
+         validates :password, presence: true, length: { in: 8..32 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, unless: :provider
 
          has_one  :profile, dependent: :destroy
          has_many :topics, dependent: :destroy
@@ -43,6 +43,9 @@ class User < ApplicationRecord
              user.name = auth.info.nickname
              user.email = auth.info.email
              user.password = Devise.friendly_token[0,20]
+             profile = user.build_profile
+             profile.remote_image_url = auth.info.image
+             profile.save
            end
          end
 
