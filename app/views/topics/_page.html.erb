@@ -1,19 +1,19 @@
 <div class="page">
   <% @topics.each do |topic| %>
-    <div class="topic-unit col-xs-12  col-md-3 pull-left">
+    <div class="topic-unit col-xs-12 col-md-3">
       <div class="col-xs-12 col-md-12 thumbnail-wrapper" >
-        <%= link_to detail_path(id: topic.id) do %>
-          <%= image_tag topic.image.url, class: 'img-responsive topic-thumbnail' %>
-        <% end %>
+        <div class="mask">
+          <%= link_to detail_path(id: topic.id) do %>
+            <%= image_tag topic.image.url, class: 'img-responsive topic-thumbnail' %>
+          <% end %>
+        </div>
       </div>
       <div class="col-xs-12 col-md-12">
         <div class="title">
-          <%= link_to detail_path(id: topic.id) do %>
-            <%= topic.title %>
-          <% end %>
+          <%= link_to topic.title, detail_path(id: topic.id), class: 'title-text'%>
         </div>
         <div class="name">
-          by <%= link_to topic.user.name, users_path(id: topic.user) %>
+          <span class="name-text">by</span> <%= link_to topic.user.name, users_path(id: topic.user), class: 'name-text' %>
         </div>
         <div class="evaluation">
           いいね！ <span id="good_count_<%= topic.id %>"><%= topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= topic.id %>"><%= topic.counter.minor_count %></span>

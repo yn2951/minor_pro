@@ -1,18 +1,18 @@
 <% @rises.each do |rise| %>
   <div class="topic-unit col-xs-12 col-md-3 pull-left">
     <div class="col-xs-12 col-md-12 thumbnail-wrapper" >
-      <%= link_to detail_path(id: rise.id) do %>
-        <%= image_tag rise.image.url, class: 'img-responsive topic-thumbnail' %>
-      <% end %>
+      <div class="mask">
+        <%= link_to detail_path(id: rise.id) do %>
+          <%= image_tag rise.image.url, class: 'img-responsive topic-thumbnail' %>
+        <% end %>
+      </div>
     </div>
     <div class="col-xs-12 col-md-12">
       <div class="title">
-        <%= link_to detail_path(id: rise.id) do %>
-          <%= rise.title %>
-        <% end %>
+        <%= link_to rise.title, detail_path(id: rise.id), class: 'title-text' %>
       </div>
       <div class="name">
-        by <%= link_to rise.user.name, users_path(id: rise.user) %>
+        <span class="name-text">by</span> <%= link_to rise.user.name, users_path(id: rise.user), class: 'name-text' %>
       </div>
       <div class="evaluation">
         いいね！ <span><%= rise.counter.good_count %></span>　|　マイナー！ <span><%= rise.counter.minor_count %></span>

@@ -2,18 +2,18 @@
   <% @post_topics.each do |post_topic| %>
     <div class="topic-unit col-xs-12 col-md-3 pull-left">
       <div class="col-md-12 thumbnail-wrapper">
-        <%= link_to detail_path(id: post_topic.id) do %>
-          <%= image_tag post_topic.image.url, class: 'img-responsive topic-thumbnail' %>
-        <% end %>
+        <div class="mask">
+          <%= link_to detail_path(id: post_topic.id) do %>
+            <%= image_tag post_topic.image.url, class: 'img-responsive topic-thumbnail' %>
+          <% end %>
+        </div>
       </div>
       <div class="col-md-12">
         <div class="title">
-          <%= link_to detail_path(id: post_topic.id) do %>
-            <%= post_topic.title %>
-          <% end %>
+          <%= link_to post_topic.title, detail_path(id: post_topic.id), class: 'title-text' %>
         </div>
         <div class="name">
-          by <%= link_to post_topic.user.name, users_path(id: post_topic.user) %>
+          <span class="name-text">by</span> <%= link_to post_topic.user.name, users_path(id: post_topic.user), class: 'name-text' %>
         </div>
         <div class="evaluation">
           いいね！ <span id="good_count_<%= post_topic.id %>"><%= post_topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= post_topic.id %>"><%= post_topic.counter.minor_count %></span>

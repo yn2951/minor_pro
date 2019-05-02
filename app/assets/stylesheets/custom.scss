@@ -1,5 +1,6 @@
 body {
   font-size: 62.5%;
+  background: #fcfcfc;
 }
 
 .alert {
@@ -117,7 +118,7 @@ ul {
 }
 
 .topic-unit {
-  padding: 10px 0;
+  padding: 10px 0 40px;
 }
 
 .title {
@@ -126,7 +127,12 @@ ul {
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 470px;
-  margin-top: 5px;
+  margin-top: 9px;
+
+  .title-text {
+    font-weight: bold;
+    color: #555 !important;
+  }
 }
 
 .page .evaluation {
@@ -137,8 +143,11 @@ ul {
   font-size: 1.2rem;
 }
 
-.thumbnail-wrapper {
+.name .name-text {
+  color: #777 !important;
+}
 
+.thumbnail-wrapper {
   overflow: hidden;
 }
 
@@ -147,11 +156,22 @@ ul {
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.mask {
+  height: fill-available;
+  height: -webkit-fill-available;
+  height: -moz-fill-available;
+  overflow: hidden;
   border-radius: 3px;
 }
 
 .page .evaluate-button {
   font-size: 1.2rem;
+}
+
+.far, .fas {
+  color: #ff6b66;
 }
 
 .rise-unit {
@@ -298,7 +318,7 @@ ul {
 }
 
 .fa-twitter {
-  color: #55acee;
+  color: #55acee !important;
 }
 
 .destroy-topic {

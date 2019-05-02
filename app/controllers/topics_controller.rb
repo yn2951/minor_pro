@@ -42,17 +42,20 @@ class TopicsController < ApplicationController
     counter = topic.build_counter
 
     if topic.save && counter.save
-      redirect_to root_path, notice: "投稿しました"
+      redirect_to root_path, notice: "投稿しました。"
     else
-      redirect_to new_topic_path, alert: "投稿に失敗しました"
+      flash.now[:alert] = "入力されていない項目があります。"
+      @topic = Topic.new(topic_params)
+      render :new
     end
   end
 
   def update
     if @topic.update(topic_params)
-      redirect_to detail_path(id: params[:id]), notice: '編集を保存しました'
+      redirect_to detail_path(id: params[:id]), notice: '編集を保存しました。'
     else
-      flash.now[:alert] = '編集の保存に失敗しました'
+      flash.now[:alert] = '入力されていない項目があります。'
+      @topic = Topic.new(topic_params)
       render :edit
     end
   end
@@ -62,7 +65,7 @@ class TopicsController < ApplicationController
       set_topic.delete
     end
 
-    redirect_to users_path(id: current_user.id), notice: '投稿を削除しました'
+    redirect_to users_path(id: current_user.id), notice: '投稿を削除しました。'
   end
 
   private
