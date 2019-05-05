@@ -210,8 +210,11 @@ ul {
   width: 180px;
 }
 
-.detail-contents {
+.detail-image {
+  border-radius: 3px;
+}
 
+.detail-contents {
 
   .info {
     font-size: 1.5rem;
@@ -369,6 +372,10 @@ ul {
 
 .search-contents {
   margin-left: -8vw;
+}
+
+.description-form {
+  height: 200px !important;
 }
 
 @media (min-width: 544px) {
