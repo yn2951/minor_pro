@@ -16,7 +16,7 @@
           <span class="name-text">by</span> <%= link_to topic.user.name, users_path(id: topic.user), class: 'name-text' %>
         </div>
         <div class="evaluation">
-          いいね！ <span id="good_count_<%= topic.id %>"><%= topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= topic.id %>"><%= topic.counter.minor_count %></span>
+          いいね！ <span id="good_count_<%= topic.id %>"><%= topic.counter.good_count %></span>　|　レア！ <span id="minor_count_<%= topic.id %>"><%= topic.counter.minor_count %></span>
         </div>
         <div class="evaluate-button">
           <span id="good_<%= topic.id %>">

@@ -1,15 +1,15 @@
 <% if user_signed_in? %>
   <% if !topic.minor_users.include?(current_user) %>
     <%= link_to minors_path(topic_id: topic.id), method: :post, remote: true do %>
-      <i class="far fa-gem"></i>
+      <i class="far fa-stars"></i>
     <% end %>
   <% else %>
     <%= link_to minors_path(topic_id: topic.id), method: :delete, remote: true do %>
-      <i class="fas fa-gem"></i>
+      <i class="fas fa-stars"></i>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to new_user_session_path do %>
-    <i class="far fa-gem"></i>
+    <i class="far fa-stars"></i>
   <% end %>
 <% end %>

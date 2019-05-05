@@ -12,7 +12,7 @@
           <div class="col-md-12 info">
             by　
             <%= link_to @topic.user.name, users_path(id: @topic.user) %>
-            　|　いいね！ <span id="good_count_<%= @topic.id %>"><%= @topic.counter.good_count %></span>　|　マイナー！ <span id="minor_count_<%= @topic.id %>"><%= @topic.counter.minor_count %></span>
+            　|　いいね！ <span id="good_count_<%= @topic.id %>"><%= @topic.counter.good_count %></span>　|　レア！ <span id="minor_count_<%= @topic.id %>"><%= @topic.counter.minor_count %></span>
             <% if @topic.user == current_user %>
               <div class="detail-evaluate-button">
               　<span class="line">|　</span>
