@@ -1,9 +1,9 @@
 <% @rises.each do |rise| %>
-  <div class="topic-unit col-xs-12 col-md-3 pull-left">
+  <div class="topic-unit rise-unit col-xs-12 col-md-3 pull-left">
     <div class="col-xs-12 col-md-12 thumbnail-wrapper" >
       <div class="mask">
         <%= link_to detail_path(id: rise.id) do %>
-          <%= image_tag rise.image.url, class: 'img-responsive topic-thumbnail' %>
+          <%= image_tag rise.image.url, class: 'topic-thumbnail' %>
         <% end %>
       </div>
     </div>
