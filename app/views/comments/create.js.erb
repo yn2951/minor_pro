@@ -1,4 +1,6 @@
-$("#comment-form").val("");
-$("#comments").prepend("<%= j(render partial: 'topics/new_comment', locals: {comment: @comment}) %>");
-$("#comment-count").html("<%= @counter.comment_count %>");
+<% if @comment.present? && @counter.present? %>
+  $("#comment-form").val("");
+  $("#comments").prepend("<%= j(render partial: 'topics/new_comment', locals: {comment: @comment}) %>");
+  $("#comment-count").html("<%= @counter.comment_count %>");
+<% end %>
 $("#flash_messages").html("<%= j(render partial: 'layouts/flash', locals: {flash: flash}) %>")

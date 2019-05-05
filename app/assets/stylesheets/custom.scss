@@ -128,11 +128,11 @@ ul {
   white-space: nowrap;
   max-width: 470px;
   margin-top: 9px;
+}
 
-  .title-text {
-    font-weight: bold;
-    color: #555 !important;
-  }
+.title-text {
+  font-weight: bold;
+  color: #555 !important;
 }
 
 .page .evaluation {
@@ -143,7 +143,7 @@ ul {
   font-size: 1.2rem;
 }
 
-.name .name-text {
+.name-text {
   color: #777 !important;
 }
 
@@ -212,6 +212,7 @@ ul {
 
 .detail-contents {
 
+
   .info {
     font-size: 1.5rem;
     margin-bottom: 10px;
@@ -223,11 +224,18 @@ ul {
   }
 
   .description {
-    margin-bottom: 50px;
+    padding-top: 12px;
+    padding-bottom: 50px;
+
+    .description-head {
+      border-bottom: 1px solid #222;
+    }
   }
 
-  .category, .genre {
-    margin-top: -5px;
+  .category {
+    margin-top: 15px;
+    color: #6b66ff;
+    font-family: 'Osaka';
   }
 
   .category {
@@ -339,6 +347,10 @@ ul {
 
 .profile-head {
   margin-bottom: 30px;
+}
+
+.edit-button {
+  color: #ff6b66;
 }
 
 .edit-link {

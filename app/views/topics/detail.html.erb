@@ -6,18 +6,22 @@
           <%= image_tag @topic.image.url, class: 'img-responsive' %>
         </div>
         <div class="col-md-8 detail-contents">
+          <div class="col-md-12 info">
+            <div class="category"><%= @topic.category_i18n %>/<%= @topic.genre_i18n %></div>
+          </div>
           <div class="col-md-12 detail-title">
-            <p><%= @topic.title %></p>
+            <p class='title-text'><%= @topic.title %></p>
           </div>
           <div class="col-md-12 info">
-            by　
-            <%= link_to @topic.user.name, users_path(id: @topic.user) %>
+            by &nbsp; <%= link_to @topic.user.name, users_path(id: @topic.user) %>
             　|　いいね！ <span id="good_count_<%= @topic.id %>"><%= @topic.counter.good_count %></span>　|　レア！ <span id="minor_count_<%= @topic.id %>"><%= @topic.counter.minor_count %></span>
             <% if @topic.user == current_user %>
               <div class="detail-evaluate-button">
               　<span class="line">|　</span>
                 <span>
-                  <%= link_to '編集する', edit_topic_path(id: @topic.id), class: 'btn btn-link edit-link' %>
+                  <%= link_to edit_topic_path(id: @topic.id), class: 'btn btn-link edit-link' do %>
+                    <span class="edit-button">編集する</span>
+                  <% end %>
                 </span>
               </div>
             <% else %>
@@ -35,11 +39,8 @@
               </div>
             <% end %>
           </div>
-          <div class="col-md-12 info">
-            <div class="category">カテゴリー： <%= @topic.category_i18n %></div>
-            <div class="genre">ジャンル： <%= @topic.genre_i18n %></div>
-          </div>
           <div class="col-md-12 description">
+            <p class="description-head">レビュー</p>
             <p><%= @topic.description %></p>
           </div>
         </div>
