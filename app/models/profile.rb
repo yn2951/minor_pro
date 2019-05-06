@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  validates :introduce, length: {maximum: 55}
+  validates :introduce, length: {maximum: 200}
 
   mount_uploader :image, UserImageUploader
 

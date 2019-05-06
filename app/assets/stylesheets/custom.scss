@@ -89,8 +89,9 @@ ul {
   font-size: 1.5rem;
 }
 
-.bar-wrapper {
-  margin-bottom: 50px;
+.list-title {
+  font-family: 'Osaka';
+  text-decoration: none !important;
 }
 
 .bar-unit {
@@ -266,7 +267,7 @@ ul {
 }
 
 #list-contents {
-  margin-top: 35px;
+  margin-top: 50px;
 }
 
 .mypage-icon {
@@ -304,6 +305,18 @@ ul {
   .edit-button {
     /*border: solid 1px #000;*/
   }
+
+  .introduce {
+    margin-top: 19px;
+    max-width: 660px;
+  }
+}
+
+.user-name-text {
+  font-size: 2rem;
+  font-family: 'Osaka';
+  font-weight: bold;
+  color: #555 !important;
 }
 
 .fa-twitter {
@@ -346,6 +359,14 @@ ul {
 
 .description-form {
   height: 200px !important;
+}
+
+.profile-button {
+  margin-right: 10px;
+}
+
+.follow-user-name {
+  font-family: 'Osaka';
 }
 
 @media (min-width: 544px) {

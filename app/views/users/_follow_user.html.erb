@@ -8,7 +8,7 @@
       </div>
       <div class="col-md-12 col-md-3">
         <div class="title">
-          <%= link_to users_path(id: following_user) do %>
+          <%= link_to users_path(id: following_user), class: 'follow-user-name' do %>
             <%= following_user.name %>
           <% end %>
         </div>

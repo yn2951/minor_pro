@@ -6,38 +6,44 @@
       </div>
       <div class="pull-left col-md-8 user-info-text">
         <div class="name">
-          <%= @user.name %>
+          <span class="user-name-text"><%= @user.name %></span>
         </div>
         <div class="evaluation">
           投稿<%= @post_topics_count %>件　フォロワー <span id="count_follows_<%= @user.id %>"><%= @user_followers_count %></span>　フォロー <span><%= @user_followings_count %></span>
         </div>
-        <div class="introduce">
-          <%= @profile.introduce %>
-        </div>
         <% if @user == current_user %>
           <div class="edit-button">
-            <%= link_to "プロフィールを編集", profiles_edit_path %>
+            <%= link_to "プロフィールを編集", profiles_edit_path, class: 'btn btn-default profile-button pull-left' %>
           </div>
           <div class="edit-button">
-            <%= link_to "登録情報を編集", edit_user_registration_path %>
+            <%= link_to "登録情報を編集", edit_user_registration_path, class: 'btn btn-default' %>
           </div>
         <% else %>
           <div class="evaluate-button" id="follow_<%= @user.id %>">
             <%= render partial: "users/follow", locals: {user: @user} %>
           </div>
         <% end %>
+        <div class="introduce">
+          <%= @profile.introduce %>
+        </div>
       </div>
     </div>
     <div class="row col-md-10 col-md-offset-1 text-center list-header">
       <div class="row">
         <div class="col-xs-4 col-md-4">
-          <%= link_to '投稿', users_path(template: 'post_topic', id: @user) %>
+          <%= link_to users_path(template: 'post_topic', id: @user), class: 'list-title' do %>
+            <span><i class="fal fa-th"></i>&nbsp;投稿</span>
+          <% end %>
         </div>
         <div class="col-xs-4 col-md-4">
-          <%= link_to '保存', users_path(templete: 'bookmark_topic', id: @user) %>
+          <%= link_to users_path(templete: 'bookmark_topic', id: @user), class: 'list-title' do %>
+            <span><i class="fal fa-bookmark"></i>&nbsp;保存済み</span>
+          <% end %>
         </div>
         <div class="col-xs-4 col-md-4">
-          <%= link_to 'フォロー', users_path(templete: 'follow_user', id: @user) %>
+          <%= link_to users_path(templete: 'follow_user', id: @user), class: 'list-title' do %>
+            <span><i class="fal fa-user-circle"></i>&nbsp;フォロー</span>
+          <% end %>
         </div>
       </div>
     </div>

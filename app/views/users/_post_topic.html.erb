@@ -12,9 +12,6 @@
         <div class="title">
           <%= link_to post_topic.title, detail_path(id: post_topic.id), class: 'title-text' %>
         </div>
-        <div class="name">
-          <span class="name-text">by</span> <%= link_to post_topic.user.name, users_path(id: post_topic.user), class: 'name-text' %>
-        </div>
         <div class="evaluation">
           いいね！ <span id="good_count_<%= post_topic.id %>"><%= post_topic.counter.good_count %></span>　|　レア！ <span id="minor_count_<%= post_topic.id %>"><%= post_topic.counter.minor_count %></span>
         </div>
