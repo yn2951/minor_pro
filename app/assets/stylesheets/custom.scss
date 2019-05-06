@@ -124,10 +124,6 @@ ul {
   padding: 10px 0 35px;
 }
 
-.rise-unit {
-  padding: 10px 0 0 0 !important;
-}
-
 .title {
   font-size: 1.5rem;
   overflow: hidden;
@@ -154,21 +150,14 @@ ul {
   color: #777 !important;
 }
 
-.thumbnail-wrapper {
-  overflow: hidden;
-}
-
 .topic-unit .topic-thumbnail {
-  min-height: 155px;
+  max-height: 500px;
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
 .mask {
-  height: fill-available;
-  height: -webkit-fill-available;
-  height: -moz-fill-available;
   overflow: hidden;
   border-radius: 3px;
 }
@@ -226,13 +215,17 @@ ul {
 
 }
 
-.line {
+.line1 {
   display: none;
 }
 
-.detail-evaluate-button {
+.line2 {
   display: block;
-  margin-top: 5px;
+  margin-top: 3px;
+}
+
+.detail-evaluate-button {
+  display: inline;
 }
 
 .comment-count {
@@ -371,20 +364,11 @@ ul {
 
 @media (min-width: 544px) {
 
-  .thumbnail-wrapper {
-    max-width: 244px;
-    max-height: 151px;
-  }
-
   .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
     padding: 110px 0;
   }
 
-  .line {
-    display: inline;
-  }
-
-  .detail-evaluate-button {
+  .line1, .line2 {
     display: inline;
   }
 
@@ -432,6 +416,45 @@ ul {
 
   .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
     padding: 130px 0;
+  }
+
+  .topic-unit .topic-thumbnail {
+    min-height: 155px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .rise-unit {
+    padding: 10px 0 0 0 !important;
+  }
+
+  .rise-unit:nth-of-type(4) {
+    display: none;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  .thumbnail-wrapper {
+    max-width: 244px;
+    max-height: 151px;
+  }
+
+  .mask {
+    height: fill-available;
+    height: -webkit-fill-available;
+    height: -moz-fill-available;
+  }
+
+  .line1 {
+    display: none;
+  }
+
+  .line2 {
+    display: block;
+    margin-top: 3px;
   }
 
 }

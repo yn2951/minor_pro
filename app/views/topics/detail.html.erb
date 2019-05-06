@@ -1,8 +1,8 @@
 <div class="detail-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="col-md-4">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+        <div class="col-sm-5 col-md-4">
           <%= image_tag @topic.image.url, class: 'img-responsive detail-image' %>
         </div>
         <div class="col-md-8 detail-contents">
@@ -14,10 +14,10 @@
           </div>
           <div class="col-md-12 info">
             by &nbsp; <%= link_to @topic.user.name, users_path(id: @topic.user) %>
-            　|　いいね！ <span id="good_count_<%= @topic.id %>"><%= @topic.counter.good_count %></span>　|　レア！ <span id="minor_count_<%= @topic.id %>"><%= @topic.counter.minor_count %></span>
+            　<span class="line1">|　</span><div class="line2">いいね！ <span id="good_count_<%= @topic.id %>"><%= @topic.counter.good_count %></span>　|　レア！ <span id="minor_count_<%= @topic.id %>"><%= @topic.counter.minor_count %></span>
             <% if @topic.user == current_user %>
               <div class="detail-evaluate-button">
-              　<span class="line">|　</span>
+              　<span>|　</span>
                 <span>
                   <%= link_to edit_topic_path(id: @topic.id), class: 'btn btn-link edit-link' do %>
                     <span class="edit-button">編集する</span>
@@ -26,7 +26,7 @@
               </div>
             <% else %>
               <div class="detail-evaluate-button">
-                <span class="line">　|　</span>
+                <span>　|　</span>
                     <span id="good_<%= @topic.id %>">
                       <%= render partial: "topics/good", locals: {topic: @topic} %>
                     </span>
@@ -38,16 +38,17 @@
                     </span>
               </div>
             <% end %>
+            </div>
           </div>
-          <div class="col-md-12 description">
+          <div class="col-sm-12 col-md-12 description">
             <p class="description-head">レビュー</p>
             <p><%= @topic.description %></p>
           </div>
         </div>
-        <div class="col-md-12 text-left comment-count">
+        <div class="col-sm-12 col-md-12 text-left comment-count">
           <h4>コメント<span id="comment-count"><%= @topic.counter.comment_count %></span>件</h4>
         </div>
-        <div class="col-md-12 comment-form">
+        <div class="col-sm-12 col-md-12 comment-form">
           <% if user_signed_in? %>
             <%= form_for @comment, url: comments_path, remote: true do |f| %>
               <%= hidden_field_tag :topic_id, @topic.id %>
@@ -63,7 +64,7 @@
             <%= link_to 'ログインしてコメントする', new_user_session_path(login: ''), class: 'btn btn-default col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2' %>
           <% end %>
         </div>
-        <div id="comments" class="col-md-12 pages">
+        <div id="comments" class="col-sm-12 col-md-12 pages">
           <%= render partial: "topics/comment" %>
           <%= paginate @comments %>
         </div>
