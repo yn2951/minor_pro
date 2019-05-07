@@ -44,7 +44,6 @@ class User < ApplicationRecord
              user.email = auth.info.email
              user.password = Devise.friendly_token[0,20]
              profile = user.build_profile
-             profile.remote_image_url = auth.info.image
              profile.save
            end
          end
