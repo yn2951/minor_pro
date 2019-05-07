@@ -40,4 +40,6 @@ Rails.application.routes.draw do
 
   post   '/bookmarks', to: 'bookmarks#create'
   delete '/bookmarks', to: 'bookmarks#destroy'
+
+  get '/overview', to: 'topics#overview'
 end

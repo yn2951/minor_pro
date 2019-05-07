@@ -48,24 +48,19 @@ ul {
   .navbar-brand {
     max-width: 200px;
     height: auto;
-    margin-left: -5vw;
-    margin-top: 5vw;
   }
 
   a {
     margin-top: 15px;
   }
 
-  .post-btn {
-    margin-left: 34px;
-  }
 }
 
-.index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
+.index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper, .overview-wrapper {
   padding: 155px 0;
 }
 
-.new-users-wrapper, .new-topics-wrapper, .login-wrapper {
+.new-users-wrapper, .new-topics-wrapper, .login-wrapper, .overview-wrapper {
   font-size: 1.5rem;
 }
 
@@ -343,7 +338,6 @@ ul {
 .edit-link {
   margin: 0;
   padding: 0;
-  float: left;
 }
 
 .user-unit {
@@ -414,8 +408,8 @@ ul {
     }
   }
 
-  .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
-    padding: 130px 0;
+  .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper, .overview-wrapper {
+    padding: 120px 0;
   }
 
   .topic-unit .topic-thumbnail {
@@ -430,7 +424,12 @@ ul {
   }
 
   .rise-unit:nth-of-type(4) {
-    display: none;
+  }
+
+  .user-info {
+    .name {
+      margin-top: 0;
+    }
   }
 
 }
@@ -455,6 +454,19 @@ ul {
   .line2 {
     display: block;
     margin-top: 3px;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  .line1 {
+    display: inline;
+  }
+
+  .line2 {
+    display: inline;
+    margin-top: 0;
   }
 
 }

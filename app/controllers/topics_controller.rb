@@ -68,6 +68,9 @@ class TopicsController < ApplicationController
     redirect_to users_path(id: current_user.id), notice: '投稿を削除しました。'
   end
 
+  def overview
+  end
+
   private
   def topic_params
     params.require(:topic).permit(:category, :genre, :title, :image, :description)

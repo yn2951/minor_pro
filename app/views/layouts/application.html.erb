@@ -20,29 +20,20 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent navbar-custom">
       <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-1">
+          <div class="col-xs-8 col-xs-offset-2 col-md-2 col-md-offset-1">
             <%= link_to root_path do %>
-              <span><%= image_tag "logo.png", class: "navbar-brand" %></span>
+              <%= image_tag "logo.png", class: "navbar-brand" %>
             <% end %>
           </div>
           <div>
-            <div class="col-xs-4 col-md-1 col-md-offset-5">
-              <%= link_to '投稿', new_topic_path, class: 'btn btn-link post-btn' %>
-            </div>
+            <%= link_to 'サイト概要', overview_path, class: 'btn btn-link col-xs-3 col-xs-offset-0 col-md-1 col-md-offset-4' %>
+            <%= link_to '投稿', new_topic_path, class: 'btn btn-link col-xs-3 col-md-1' %>
             <% if user_signed_in? %>
-              <div class="col-xs-4 col-md-1">
-                <%= link_to 'マイページ', users_path(id: current_user.id), class: 'btn btn-link' %>
-              </div>
-              <div class="col-xs-4 col-md-1">
-                <%= link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-link', method: :delete, data: {confirm: 'ログアウトしますか？'} %>
-              </div>
+              <%= link_to 'マイページ', users_path(id: current_user.id), class: 'btn btn-link col-xs-3 col-md-1' %>
+              <%= link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-link col-xs-3 col-md-1', method: :delete, data: {confirm: 'ログアウトしますか？'} %>
             <% else %>
-              <div class="col-xs-4 col-md-1">
-                <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-link' %>
-              </div>
-              <div class="col-xs-4 col-md-1">
-                <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-link' %>
-              </div>
+              <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-link col-xs-3 col-md-1' %>
+              <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-link col-xs-3 col-md-1' %>
             <% end %>
           </div>
         </div>
