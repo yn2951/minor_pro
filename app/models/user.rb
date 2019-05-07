@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
 
-         validates :name, presence: true, length: { in: 1..15 }
+         validates :name, presence: true, length: { in: 1..15 }, unless: :provider
          validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
          validates :password, presence: true, length: { in: 8..32 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, unless: :provider
 
@@ -44,6 +44,7 @@ class User < ApplicationRecord
              user.email = auth.info.email
              user.password = Devise.friendly_token[0,20]
              profile = user.build_profile
+             profile.remote_image_url = auth.info.image
              profile.save
            end
          end
