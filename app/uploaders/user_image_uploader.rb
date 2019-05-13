@@ -1,7 +1,9 @@
 class UserImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+
+  process :convert => 'jpg'
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?
@@ -11,11 +13,11 @@ class UserImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_whitelist
-    %w(png jpg heif)
+    %w(png jpg jpeg heic heif)
   end
 
   def filename
-    original_filename if original_filename
+    super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
   end
 
   # Override the directory where uploaded files will be stored.
