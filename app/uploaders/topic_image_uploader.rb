@@ -11,7 +11,7 @@ class TopicImageUploader < CarrierWave::Uploader::Base
   end
 
   def extension_whitelist
-    %w(png jpg)
+    %w(png jpg heif)
   end
 
   def filename

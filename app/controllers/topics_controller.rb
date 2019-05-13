@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
     @sort_title = params[:sort_title] ? params[:sort_title] : "投稿日時が新しい"
     search_table = Topic.search_table(@category, @genre, @keyword)
     @rises = search_table.order("totalize_result DESC", "good_count DESC", {created_at: :desc}).limit(4)
-    @topics = search_table.sort_table(sort_column, sort_direction).page(params[:page]).per(32)
+    @topics = search_table.sort_table(sort_column, sort_direction).page(params[:page]).per(24)
   end
 
   def detail
