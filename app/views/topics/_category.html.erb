@@ -3,6 +3,7 @@
   <span class="caret"></span>
 </button>
 <ul class="dropdown-menu">
+  <li> <%= categorize nil, "カテゴリー未選択" %> </li>
   <li> <%= categorize :japanese, @category_keys[:japanese] %> </li>
   <li> <%= categorize :english, @category_keys[:english] %> </li>
   <li> <%= categorize :kpop, @category_keys[:kpop] %> </li>

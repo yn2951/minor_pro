@@ -4,6 +4,9 @@
     <%= hidden_field_tag :genre, @genre %>
     <%= hidden_field_tag :category_title, @category_title %>
     <%= hidden_field_tag :genre_title, @genre_title %>
+    <%= hidden_field_tag :sort, @column %>
+    <%= hidden_field_tag :direction, @direction %>
+    <%= hidden_field_tag :sort_title, @sort_title %>
     <%= text_field_tag :keyword, @keyword, class: 'form-control'%>
     <span class="input-group-btn">
       <%= submit_tag '検索', class: 'btn btn-default' %>

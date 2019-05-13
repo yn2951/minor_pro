@@ -23,8 +23,10 @@ class TopicsController < ApplicationController
     @category = params[:category]
     @genre = params[:genre]
     @keyword = params[:keyword]
-    @category_title = params[:category_title] ? params[:category_title] : "カテゴリー選択"
-    @genre_title = params[:genre_title] ? params[:genre_title] : "ジャンル選択"
+    @column = params[:sort]
+    @direction = params[:direction]
+    @category_title = params[:category_title] ? params[:category_title] : "カテゴリー未選択"
+    @genre_title = params[:genre_title] ? params[:genre_title] : "ジャンル未選択"
     @sort_title = params[:sort_title] ? params[:sort_title] : "投稿日時が新しい"
     search_table = Topic.search_table(@category, @genre, @keyword)
     @rises = search_table.order("totalize_result DESC", "good_count DESC", {created_at: :desc}).limit(4)

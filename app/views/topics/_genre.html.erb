@@ -3,6 +3,7 @@
   <span class="caret"></span>
 </button>
 <ul class="dropdown-menu">
+  <li> <%= genrize nil, "ジャンル未選択" %> </li>
   <li> <%= genrize :pops, @genre_keys[:pops] %> </li>
   <li> <%= genrize :rock, @genre_keys[:rock] %> </li>
   <li> <%= genrize :hiphop, @genre_keys[:hiphop] %> </li>
