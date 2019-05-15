@@ -166,11 +166,11 @@ ul {
 }
 
 .dropdown-toggle {
-  width: 180px;
+  width: 212px;
 }
 
 .search-form {
-
+  width: 212px;
 }
 
 .detail-image {
@@ -454,6 +454,10 @@ ul {
     margin-top: 3px;
   }
 
+  .header-btn {
+    min-width: 93px;
+  }
+
 }
 
 @media (min-width: 992px) {
@@ -465,6 +469,10 @@ ul {
   .line2 {
     display: inline;
     margin-top: 0;
+  }
+
+  .header-btn {
+    min-width: 101px;
   }
 
 }
