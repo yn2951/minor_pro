@@ -165,14 +165,6 @@ ul {
   color: #ff6b66;
 }
 
-.dropdown-toggle {
-  width: 212px;
-}
-
-.search-form {
-  width: 212px;
-}
-
 .detail-image {
   border-radius: 3px;
 }
@@ -356,6 +348,25 @@ ul {
   font-family: 'Osaka';
 }
 
+.dropdown-toggle {
+  min-width: 178px;
+  margin-bottom: 5px;
+}
+
+.search-form {
+  min-width: 178px;
+  margin-bottom: 20px;
+}
+
+.border {
+  margin-top: 20px;
+  border-bottom: solid 1px #ccc;
+}
+
+.navbar-brand {
+  padding: 15px 0;
+}
+
 @media (min-width: 544px) {
 
   .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
@@ -364,9 +375,6 @@ ul {
 
   .line1, .line2 {
     display: inline;
-  }
-
-  .search-form {
   }
 
   .detail-contents {
@@ -397,9 +405,6 @@ ul {
     padding-left: 0;
   }
 
-  .search-contents {
-  }
-
   .navbar-transparent {
 
     .navbar-brand {
@@ -409,7 +414,7 @@ ul {
   }
 
   .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper, .overview-wrapper {
-    padding: 120px 0;
+    padding: 110px 0;
   }
 
   .topic-unit .topic-thumbnail {
@@ -458,6 +463,10 @@ ul {
     min-width: 93px;
   }
 
+  .navbar-brand {
+    padding: 15px;
+  }
+
 }
 
 @media (min-width: 992px) {
@@ -473,6 +482,18 @@ ul {
 
   .header-btn {
     min-width: 101px;
+  }
+
+  .search-btn {
+    margin-right: -14px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+  .search-btn {
+    margin-right: 25px;
   }
 
 }
