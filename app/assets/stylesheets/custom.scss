@@ -40,8 +40,12 @@ ul {
 
 }
 
+.top-wrapper {
+  padding: 50px 0;
+}
+
 .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper, .overview-wrapper {
-  padding: 155px 0;
+  padding: 110px 0;
 }
 
 .new-users-wrapper, .new-topics-wrapper, .login-wrapper, .overview-wrapper {
@@ -69,7 +73,7 @@ ul {
 }
 
 .list-title {
-  font-family: 'Osaka';
+  font-family: 'Osaka', sans-serif;
   text-decoration: none !important;
 }
 
@@ -177,7 +181,7 @@ ul {
   .category {
     margin-top: 15px;
     color: #6b66ff;
-    font-family: 'Osaka';
+    font-family: 'Osaka', sans-serif;
   }
 
   .category {
@@ -278,7 +282,7 @@ ul {
 
 .user-name-text {
   font-size: 2rem;
-  font-family: 'Osaka';
+  font-family: 'Osaka', sans-serif;
   font-weight: bold;
   color: #555 !important;
 }
@@ -329,7 +333,7 @@ ul {
 }
 
 .follow-user-name {
-  font-family: 'Osaka';
+  font-family: 'Osaka', sans-serif;
 }
 
 .dropdown-toggle {
@@ -428,10 +432,6 @@ ul {
 
 @media (min-width: 544px) {
 
-  .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
-    padding: 110px 0;
-  }
-
   .line1, .line2 {
     display: inline;
   }
@@ -470,10 +470,6 @@ ul {
       margin-left: 0;
       margin-top: 0;
     }
-  }
-
-  .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper, .overview-wrapper {
-    padding: 110px 0;
   }
 
   .topic-unit .topic-thumbnail {
@@ -519,7 +515,7 @@ ul {
   }
 
   .header-btn {
-    width: 93px;
+    width: 97px;
     display: inline-block;
     padding: 19px 0;
     text-align: center;
@@ -542,6 +538,10 @@ ul {
     display: block;
   }
 
+  .top-wrapper {
+    padding: 65px 0;
+  }
+
 }
 
 @media (min-width: 992px) {
@@ -556,16 +556,24 @@ ul {
   }
 
   .header-btn {
-    min-width: 101px;
+    min-width: 105px;
   }
 
   .search-btn {
     margin-right: -14px;
   }
 
+  .top-wrapper {
+    padding: 50px 0;
+  }
+
 }
 
 @media (min-width: 1200px) {
+
+  .header-btn {
+    min-width: 111px;
+  }
 
   .search-btn {
     margin-right: 25px;

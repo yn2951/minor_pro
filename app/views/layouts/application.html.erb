@@ -33,6 +33,7 @@
                 <label class="nav-unshown" id="nav-close" for="nav-input"></label>
                 <div id="nav-content">
                   <%= link_to 'サイト概要', overview_path, class: 'header-btn btn btn-link' %>
+                  <%= link_to '検索', search_path, class: 'header-btn btn btn-link' %>
                   <%= link_to '投稿', new_topic_path, class: 'header-btn btn btn-link' %>
                   <% if user_signed_in? %>
                     <%= link_to 'マイページ', users_path(id: current_user.id), class: 'header-btn btn btn-link' %>
@@ -44,8 +45,9 @@
                 </div>
               </div>
               <div id="pc-nav">
-                <%= link_to 'サイト概要', overview_path, class: 'header-btn btn btn-link col-xs-3 col-xs-offset-0 col-sm-1 col-sm-offset-4 col-md-1 col-md-offset-4 col-lg-1 col-lg-offset-5' %>
-                <%= link_to '投稿', new_topic_path, class: 'header-btn btn btn-link col-xs-3 col-sm-1 col-md-1 col-lg-1 col-lg-offset-0' %>
+                <%= link_to 'サイト概要', overview_path, class: 'header-btn btn btn-link col-sm-1 col-sm-offset-2 col-md-1 col-md-offset-2 col-lg-1 col-lg-offset-3' %>
+                <%= link_to '検索', search_path, class: 'header-btn btn btn-link col-sm-1 col-md-1 col-lg-1 col-lg-offset-0' %>
+                <%= link_to '投稿', new_topic_path, class: 'header-btn btn btn-link col-sm-1 col-md-1 col-lg-1 col-lg-offset-0' %>
                 <% if user_signed_in? %>
                   <%= link_to 'マイページ', users_path(id: current_user.id), class: 'header-btn btn btn-link col-xs-3 col-sm-1 col-md-1 col-lg-1 col-lg-offset-0' %>
                   <%= link_to 'ログアウト', destroy_user_session_path, class: 'header-btn btn btn-link col-xs-3 col-sm-1 col-md-1 col-lg-1 col-lg-offset-0', method: :delete, data: {confirm: 'ログアウトしますか？'} %>

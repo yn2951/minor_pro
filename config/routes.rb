@@ -42,4 +42,6 @@ Rails.application.routes.draw do
   delete '/bookmarks', to: 'bookmarks#destroy'
 
   get '/overview', to: 'topics#overview'
+
+  get '/search', to: 'topics#search'
 end

@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_topic, only: [:edit, :update]
-  before_action :keys, only: [:index]
+  before_action :keys, only: [:index, :search]
 
   def new
     if !user_signed_in?
@@ -20,6 +20,11 @@ class TopicsController < ApplicationController
       current_user.build_profile.save
     end
 
+    @rises = Topic.joins_table.order("totalize_result DESC", "good_count DESC", {created_at: :desc}).limit(4)
+    @topics = Topic.joins_table.page(params[:page]).per(24)
+  end
+
+  def search
     @category = params[:category]
     @genre = params[:genre]
     @keyword = params[:keyword]
