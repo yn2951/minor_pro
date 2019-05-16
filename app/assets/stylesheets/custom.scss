@@ -29,18 +29,6 @@ ul {
   list-style-type: none;
 }
 
-.btn-black {
-  border: 2px solid #fff;
-  margin: 15px;
-  color: #fff !important;
-  font-size: 20px;
-  background-color: rgba(0,0,0,0.0);
-
-  &:hover {
-    color: #bbb !important;
-  }
-}
-
 .navbar-transparent {
   margin-bottom: 0px;
   background-color: rgba(255,255,255,0.8);
@@ -48,10 +36,6 @@ ul {
   .navbar-brand {
     max-width: 200px;
     height: auto;
-  }
-
-  a {
-    margin-top: 15px;
   }
 
 }
@@ -367,6 +351,81 @@ ul {
   padding: 15px 0;
 }
 
+/*チェックボックス等は非表示に*/
+.nav-unshown {
+  display:none;
+}
+
+/*アイコンのスペース*/
+#nav-open {
+  display: inline-block;
+  font-size: 30px;
+  margin: 13px 16px 0 0;
+  float: right;
+}
+
+#pc-nav {
+  display: none;
+}
+
+.fa-bars {
+  color: #666 !important;
+}
+
+/*閉じる用の薄黒カバー*/
+#nav-close {
+  display: none;/*はじめは隠しておく*/
+  position: fixed;
+  z-index: 99;
+  top: 0;/*全体に広がるように*/
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  transition: .3s ease-in-out;
+}
+
+/*中身*/
+#nav-content {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;/*最前面に*/
+  width: 200px;/*右側に隙間を作る（閉じるカバーを表示）*/
+  max-width: 330px;/*最大幅（調整してください）*/
+  height: 100%;
+  background: #fff;/*背景色*/
+  transition: .3s ease-in-out;/*滑らかに表示*/
+  -webkit-transform: translateX(-105%);
+  transform: translateX(-105%);/*左に隠しておく*/
+}
+
+/*チェックが入ったらもろもろ表示*/
+#nav-input:checked ~ #nav-close {
+  display: block;/*カバーを表示*/
+  opacity: .5;
+}
+
+#nav-input:checked ~ #nav-content {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);/*中身を表示（右へスライド）*/
+  box-shadow: 6px 0 25px rgba(0,0,0,.15);
+}
+
+.header-btn {
+  width: 200px;
+  display: block;
+  text-align: left;
+  padding: 15px;
+
+  &:hover {
+    background-color: #ddd !important;
+    text-decoration: none;
+  }
+}
+
 @media (min-width: 544px) {
 
   .index-topics-wrapper, .new-users-wrapper, .index-users-wrapper, .new-topics-wrapper, .login-wrapper, .detail-wrapper {
@@ -460,11 +519,27 @@ ul {
   }
 
   .header-btn {
-    min-width: 93px;
+    width: 93px;
+    display: inline-block;
+    padding: 19px 0;
+    text-align: center;
+
+    &:hover {
+      background-color: #ddd !important;
+      text-decoration: none;
+    }
   }
 
   .navbar-brand {
     padding: 15px;
+  }
+
+  #nav-open {
+    display: none;
+  }
+
+  #pc-nav {
+    display: block;
   }
 
 }

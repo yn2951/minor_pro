@@ -22,12 +22,28 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
             <div class="row">
-              <div class="col-xs-12 col-xs-offset-0 col-sm-2 col-sm-offset-0 col-md-2 col-md-offset-0 col-lg-2 col-lg-offset-0">
+              <div class="col-xs-10 col-xs-offset-0 col-sm-2 col-sm-offset-0 col-md-2 col-md-offset-0 col-lg-2 col-lg-offset-0">
                 <%= link_to root_path do %>
                   <%= image_tag "logo.png", class: "navbar-brand" %>
                 <% end %>
               </div>
-              <div>
+              <div id="nav-drawer">
+                <input id="nav-input" type="checkbox" class="nav-unshown">
+                <label id="nav-open" for="nav-input"><span><i class="far fa-bars"></i></span></label>
+                <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+                <div id="nav-content">
+                  <%= link_to 'サイト概要', overview_path, class: 'header-btn btn btn-link' %>
+                  <%= link_to '投稿', new_topic_path, class: 'header-btn btn btn-link' %>
+                  <% if user_signed_in? %>
+                    <%= link_to 'マイページ', users_path(id: current_user.id), class: 'header-btn btn btn-link' %>
+                    <%= link_to 'ログアウト', destroy_user_session_path, class: 'header-btn btn btn-link', method: :delete, data: {confirm: 'ログアウトしますか？'} %>
+                  <% else %>
+                    <%= link_to '新規登録', new_user_registration_path, class: 'header-btn btn btn-link' %>
+                    <%= link_to 'ログイン', new_user_session_path, class: 'header-btn btn btn-link' %>
+                  <% end %>
+                </div>
+              </div>
+              <div id="pc-nav">
                 <%= link_to 'サイト概要', overview_path, class: 'header-btn btn btn-link col-xs-3 col-xs-offset-0 col-sm-1 col-sm-offset-4 col-md-1 col-md-offset-4 col-lg-1 col-lg-offset-5' %>
                 <%= link_to '投稿', new_topic_path, class: 'header-btn btn btn-link col-xs-3 col-sm-1 col-md-1 col-lg-1 col-lg-offset-0' %>
                 <% if user_signed_in? %>
