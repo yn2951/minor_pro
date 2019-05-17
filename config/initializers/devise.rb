@@ -257,7 +257,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :twitter, ENV["Twitter_API_key"], ENV["Twitter_API_secret"], secure_image_url: 'true', image_size: 'original'
+  config.omniauth :twitter, ENV["Twitter_API_key"], ENV["Twitter_API_secret"], callback_url: "https://murmuring-mountain-27619.herokuapp.com/users/auth/twitter", secure_image_url: 'true', image_size: 'original'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
