@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_action :set_topic, only: [:edit, :update]
-  before_action :keys, only: [:index, :search]
+  before_action :keys, only: [:search]
 
   def new
     if !user_signed_in?
@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
     end
 
     @rises = Topic.joins_table.order("totalize_result DESC", "good_count DESC", {created_at: :desc}).limit(4)
-    @topics = Topic.joins_table.page(params[:page]).per(24)
+    @topics = Topic.joins_table.order("created_at DESC").page(params[:page]).per(24)
   end
 
   def search
@@ -33,9 +33,7 @@ class TopicsController < ApplicationController
     @category_title = params[:category_title] ? params[:category_title] : "カテゴリー未選択"
     @genre_title = params[:genre_title] ? params[:genre_title] : "ジャンル未選択"
     @sort_title = params[:sort_title] ? params[:sort_title] : "投稿日時が新しい"
-    search_table = Topic.search_table(@category, @genre, @keyword)
-    @rises = search_table.order("totalize_result DESC", "good_count DESC", {created_at: :desc}).limit(4)
-    @topics = search_table.sort_table(sort_column, sort_direction).page(params[:page]).per(24)
+    @topics = Topic.search_table(@category, @genre, @keyword).sort_table(sort_column, sort_direction).page(params[:page]).per(24)
   end
 
   def detail
