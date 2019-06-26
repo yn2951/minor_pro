@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   end
 
   def index
+    if current_user && current_user.profile.nil?
+      User.remove_same_email(current_user)
+      current_user.build_profile.save
+    end
+    
     @user = User.find(params[:id])
     @profile = @user.profile
     @post_topics_count = @user.topics.count

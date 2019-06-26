@@ -7,6 +7,11 @@ class TopicsController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_path, notice: 'ログインして下さい。'
     else
+      if current_user && current_user.profile.nil?
+        User.remove_same_email(current_user)
+        current_user.build_profile.save
+      end
+
       @topic = Topic.new
     end
   end
